@@ -18,8 +18,17 @@
   list-style-type: none;
 
 }
-.imgIntouch{
-  border-radius: 30px;
+.my-image {
+  width: 500px;
+  margin: 20px auto;
+}
+
+/* Styles for screens smaller than 768px */
+@media (max-width: 768px) {
+  .my-image {
+    width: 100%; /* Full width on smaller screens */
+    margin: 10px;
+  }
 }
 .heroDiv, .contactform{
   place-items: center;
@@ -188,7 +197,7 @@
     <div class="hero-content">
      <div> <h1>Get in Touch</h1>
       <p>Step closer to guidance, mentorship, and wisdom you can trust.</p></div>
-      <img src="contact-us.jpeg" alt="" class="imgIntouch">
+      <img src="contact-us.jpeg" alt="" class="my-image">
     </div>
     
   </section>
@@ -242,3 +251,4 @@
 </html>
 
 <!-- Contact form page content here -->
+
