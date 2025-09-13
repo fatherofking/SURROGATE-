@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Fatherly Wisdom</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+</head>
+<style>
+.myFather{
+  font-size: 50px;
+  font-weight: bold;
+}
+.navbar ul{
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+
+}
+.imgIntouch{
+  border-radius: 30px;
+}
+.heroDiv, .contactform{
+  place-items: center;
+}
+/* Contact Section Wrapper */
+.contactform {
+  background: #0d0d0d; /* black background */
+  padding: 60px 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Section Container */
+.contact-section .container {
+  max-width: 600px;
+  width: 100%;
+  background: #1a1a1a; /* dark grey card */
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,170,255,0.3);
+  animation: glowPulse 3s infinite alternate;
+}
+
+/* Glow Animation */
+@keyframes glowPulse {
+  from {
+    box-shadow: 0 0 15px rgba(0,170,255,0.3), 0 0 30px rgba(0,170,255,0.1);
+  }
+  to {
+    box-shadow: 0 0 25px rgba(0,170,255,0.6), 0 0 50px rgba(0,170,255,0.2);
+  }
+}
+
+/* Section Heading */
+.contact-section h2 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 25px;
+  color: #00aaff; /* bright blue accent */
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #ccc; /* light grey text */
+}
+
+.form-group input,
+.form-group textarea {
+  background: #111;
+  color: #fff;
+  padding: 12px 14px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Hover + Focus States */
+.form-group input:hover,
+.form-group textarea:hover {
+  border-color: #0099ff;
+  box-shadow: 0 0 8px rgba(0,170,255,0.5);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #00aaff;
+  box-shadow: 0 0 12px rgba(0,170,255,0.7);
+}
+
+/* Button Styling */
+.btn {
+  display: inline-block;
+  width: 100%;
+  padding: 14px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+/* Blue Button */
+.gold-btn {
+  background: linear-gradient(135deg, #00aaff, #0066ff);
+  color: #fff;
+}
+
+.gold-btn:hover {
+  background: linear-gradient(135deg, #0066ff, #0044cc);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,170,255,0.5);
+}
+
+/* Form Response */
+.form-response {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 15px;
+  color: #aaa;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .contact-section .container {
+    padding: 25px;
+  }
+
+  .contact-section h2 {
+    font-size: 24px;
+  }
+}
+
+</style>
+<body class="dark-bg gold-text">
+
+  <!-- Header -->
+  <header>
+    <div class="logo">SURROGATE FATHER</div>
+    <nav>
+       <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">privacy policy</a>
+  
+    </nav>
+    <div id="hamburger">&#9776;</div>
+  </header>
+   
+   
+    <div id="sidebar">
+        <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">Privacy policy</a>
+  
+  </div>
+
+  <!-- Hero -->
+  <div class="heroDiv">
+  <section class="hero contact-hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+     <div> <h1>Get in Touch</h1>
+      <p>Step closer to guidance, mentorship, and wisdom you can trust.</p></div>
+      <img src="contact-us.jpeg" alt="" class="imgIntouch">
+    </div>
+    
+  </section>
+  </div>
+  <!-- Contact Form Section -->
+   <div class="contactform">
+  <section class="contact-section">
+    <div class="container">
+      <h2>Send a Message</h2>
+      <form id="contactForm">
+        <div class="form-group">
+          <label for="fname">Full Name</label>
+          <input type="text" id="fname" name="fname" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn gold-btn">Send Message</button>
+      </form>
+      <div id="formResponse" class="form-response"></div>
+    </div>
+  </section>
+   </div>
+  <!-- Newsletter Signup -->
+  <section class="newsletter">
+    <div class="container">
+      <h2>Stay Connected</h2>
+      <p>Join thousands learning wealth, wisdom, and life guidance.</p>
+      <form id="newsletterForm">
+        <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
+        <button type="submit" class="btn gold-btn">Subscribe</button>
+      </form>
+      <div id="newsletterResponse" class="form-response"></div>
+    </div>
+  </section
+
+ 
+  <!-- Footer -->
+  <footer class="site-footer">
+    <p>© 2025 Fatherly Wisdom | Built for Legacy</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+  
+</body>
+</html>
+<!-- Contact form page content here -->

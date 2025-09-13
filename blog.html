@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Blog Page</title>
+  <link rel="stylesheet" href="css\style.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #0b0c10;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e90ff;
+      margin-bottom: 40px;
+      font-size: 2.5rem;
+    }
+
+    .blog-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .blog-card {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #111;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .blog-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .blog-info {
+      padding: 16px;
+      background: #111;
+      transition: opacity 0.3s ease;
+    }
+
+    .blog-info h3 {
+      margin: 0 0 8px;
+      color: #1e90ff;
+      font-size: 18px;
+    }
+
+    .blog-info p {
+      margin: 0;
+      color: #ccc;
+      font-size: 14px;
+    }
+
+    /* Dropdown overlay */
+    .dropdown {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.92);
+      color: #ccc;
+      font-size: 14px;
+      line-height: 1.5;
+      padding: 18px;
+      transform: translateY(100%);
+      transition: transform 0.5s ease;
+      border-top: 2px solid #1e90ff;
+    }
+
+    /* On hover: hide short text, show dropdown */
+    .blog-card:hover .blog-info {
+      opacity: 0;
+    }
+
+    .blog-card:hover .dropdown {
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+ <header>
+    <div class="logo">SURROGATE FATHER</div>
+    <nav>
+       <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">privacy policy</a>
+  
+    </nav>
+    <div id="hamburger">&#9776;</div>
+  </header>
+   
+   
+    <div id="sidebar">
+        <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">Privacy policy</a>
+  
+  </div>
+  <h1>Latest News</h1>
+
+  <div class="blog-container">
+    <!-- Blog Card 1 -->
+    <div class="blog-card">
+      <img src="https://source.unsplash.com/400x300/?technology" alt="News Image">
+      <div class="blog-info">
+        <h3>Tech Innovation</h3>
+        <p>AI reshaping industries</p>
+      </div>
+      <div class="dropdown">
+        Artificial intelligence is transforming various sectors, from healthcare to finance, by increasing efficiency and opening up new possibilities.
+      </div>
+    </div>
+
+    <!-- Blog Card 2 -->
+    <div class="blog-card">
+      <img src="https://source.unsplash.com/400x300/?nature" alt="News Image">
+      <div class="blog-info">
+        <h3>Environment</h3>
+        <p>Forests under threat</p>
+      </div>
+      <div class="dropdown">
+        Climate change and human activity are endangering ecosystems, with deforestation leading to severe biodiversity loss worldwide.
+      </div>
+    </div>
+
+    <!-- Blog Card 3 -->
+    <div class="blog-card">
+      <img src="https://source.unsplash.com/400x300/?business" alt="News Image">
+      <div class="blog-info">
+        <h3>Global Economy</h3>
+        <p>Markets in flux</p>
+      </div>
+      <div class="dropdown">
+        Financial markets are experiencing volatility as investors respond to shifting economic policies and global uncertainties.
+      </div>
+    </div>
+  </div>
+</body>
+<script src="js/script.js"></script>
+</html>
+

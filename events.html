@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Events Page</title>
+  <link rel="stylesheet" href="css\style.css">
+  <style>
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: #0b0c10;
+      color: #fff;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #1e90ff;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+
+    /* Top Controls (search + filter) */
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 30px;
+    }
+
+    /* Search bar */
+    .search-input {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: 1px solid #1e90ff;
+      background: #111;
+      color: #fff;
+      font-size: 14px;
+      width: 220px;
+      transition: all 0.3s;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: #0d6efd;
+      box-shadow: 0 0 5px #1e90ff;
+    }
+
+    /* Filter buttons */
+    .filter-btn {
+      background: #111;
+      color: #1e90ff;
+      border: 1px solid #1e90ff;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #1e90ff;
+      color: #fff;
+    }
+
+    /* Events Grid */
+    .events-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+    }
+
+    .event-card {
+      background: #111;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease;
+      display: none;
+    }
+
+    .event-card.show {
+      display: block;
+    }
+
+    .event-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .event-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .event-info {
+      padding: 18px;
+    }
+
+    .event-info h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      color: #1e90ff;
+    }
+
+    .event-meta {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 12px;
+    }
+
+    .event-meta span {
+      display: inline-block;
+      margin-right: 15px;
+    }
+
+    .event-info p {
+      font-size: 14px;
+      color: #ccc;
+      margin: 0 0 16px;
+      line-height: 1.5;
+    }
+
+    .event-btn {
+      display: inline-block;
+      padding: 10px 18px;
+      background: #1e90ff;
+      color: #fff;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      transition: background 0.3s;
+    }
+
+    .event-btn:hover {
+      background: #0d6efd;
+    }
+  </style>
+</head>
+<header>
+    <div class="logo">SURROGATE FATHER</div>
+    <nav>
+       <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">privacy policy</a>
+  
+    </nav>
+    <div id="hamburger">&#9776;</div>
+  </header>
+   
+   
+    <div id="sidebar">
+        <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">Privacy policy</a>
+  
+  </div>
+<body>
+  <h1>Upcoming Events</h1>
+
+  <!-- Controls -->
+  <div class="controls">
+    <!-- Search -->
+    <input type="text" id="search" class="search-input" placeholder="Search events...">
+    
+    <!-- Filters -->
+    <button class="filter-btn active" onclick="filterEvents('all', event)">All</button>
+    <button class="filter-btn" onclick="filterEvents('tech', event)">Tech</button>
+    <button class="filter-btn" onclick="filterEvents('music', event)">Music</button>
+    <button class="filter-btn" onclick="filterEvents('business', event)">Business</button>
+  </div>
+
+  <div class="events-container" id="events">
+    <!-- Event 1 (Tech) -->
+    <div class="event-card tech show">
+      <img src="https://source.unsplash.com/400x300/?conference" alt="Event Image">
+      <div class="event-info">
+        <h3>Tech Conference 2025</h3>
+        <div class="event-meta">
+          <span>📅 Oct 20, 2025</span>
+          <span>📍 Lagos, Nigeria</span>
+        </div>
+        <p>Join top innovators and thought leaders in technology as they discuss the future of AI, VR, and blockchain.</p>
+        <a href="register.php" class="event-btn">Register</a>
+      </div>
+    </div>
+
+    <!-- Event 2 (Music) -->
+    <div class="event-card music show">
+      <img src="https://source.unsplash.com/400x300/?music,concert" alt="Event Image">
+      <div class="event-info">
+        <h3>Summer Music Festival</h3>
+        <div class="event-meta">
+          <span>📅 Nov 5, 2025</span>
+          <span>📍 Abuja, Nigeria</span>
+        </div>
+        <p>A celebration of music, culture, and food. Featuring top African artists and international performers.</p>
+        <a href="#" class="event-btn">Get Tickets</a>
+      </div>
+    </div>
+
+    <!-- Event 3 (Business) -->
+    <div class="event-card business show">
+      <img src="https://source.unsplash.com/400x300/?startup,meeting" alt="Event Image">
+      <div class="event-info">
+        <h3>Startup Pitch Night</h3>
+        <div class="event-meta">
+          <span>📅 Dec 1, 2025</span>
+          <span>📍 Online</span>
+        </div>
+        <p>Watch innovative startups pitch to investors, network with founders, and discover the next big thing.</p>
+        <a href="#" class="event-btn">Learn More</a>
+      </div>
+    </div>
+  </div>
+
+  
+   
+</body>
+<script src="js\script.js"></script>
+</html>
+
+

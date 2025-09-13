@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>surrogate father.</title>
+  <meta name="description" content="Guidance, mentorship, books and tutorials for men building wealth, family and legacy." />
+  <link rel="stylesheet" href="css\style.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+  <script defer src="js/script.js"></script>
+</head>
+<style>
+  .imghome{
+    width: 350px;
+    border-radius: 40px;
+  }
+  .client{
+    border-radius: 40px;
+    width: 50px;
+  }
+  .faq-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+  }
+
+  .faq-header {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .faq-header h2 {
+    font-size: 2rem;
+    color: #00aaff;
+  }
+
+  .faq-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .faq-item {
+    background: #161b22;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .faq-item:hover {
+    transform: scale(1.02);
+  }
+
+  .faq-item img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    margin-bottom: 10px;
+  }
+
+  .faq-question {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #00aaff;
+  }
+
+  .faq-answer {
+    margin-top: 10px;
+    display: none;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #ddd;
+  }
+
+  .faq-item.active .faq-answer {
+    display: block;
+  }
+
+  .faq-item.active .faq-toggle {
+    transform: rotate(45deg);
+    color: #ffcc00;
+  }
+
+  @media (max-width: 768px) {
+    .faq-container {
+      grid-template-columns: 1fr;
+    }
+  }
+
+</style>
+<body>
+  <header>
+    <div class="logo">My Website</div>
+    <nav>
+       <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">privacy policy</a>
+  
+    </nav>
+    <div id="hamburger">&#9776;</div>
+  </header>
+   
+   
+    <div id="sidebar">
+        <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">Members</a>
+  
+  </div>
+  
+
+  <main id="main">
+    <section class="hero">
+      <picture class="hero-media">
+        <source srcset="assets/videos/hero.webm" type="video/webm">
+        <source srcset="assets/videos/hero.mp4" type="video/mp4">
+        <img src="background.jpg" alt="Founder speaking" />
+      </picture>
+
+      <div id="lottieOrn" aria-hidden="true"></div>
+
+      <div class="hero-content container">
+        <h1>Step Into Fatherly Wisdom.<br><span class="accent">Build Wealth. Build Life.</span></h1>
+        <p class="lead">Join the movement of men who lead their families, build wealth, and leave a legacy.</p>
+
+        <form id="mc-hero" class="mc-form hero-form" method="POST" action="https://YOUR_MAILCHIMP_URL" novalidate>
+          <input name="FNAME" type="text" placeholder="First name" required>
+          <input name="EMAIL" type="email" placeholder="Email address" required>
+          <button type="submit" class="btn btn-primary">Enter the Circle</button>
+        </form>
+
+        <div class="hero-cta-grid">
+          <a class="card" href="book-shop.html">Shop Books</a>
+          <a class="card" href="mentorship.html">Apply for Mentorship</a>
+          <a class="card" href="events.html">Reserve a Seat</a>
+        </div>
+
+        <div class="hero-stats">
+          <div><strong class="stat-value" data-target="120">0</strong><small>Lives Transformed</small></div>
+          <div><strong class="stat-value" data-target="500">0</strong><small>Books Sold</small></div>
+          <div><strong class="stat-value" data-target="20">0</strong><small>Weekly Lessons</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cred container">
+      <p class="muted">Trusted by top leaders & organizations</p>
+      <div class="logos">
+        <img src="eugeneclient2.jpg" alt="Client 1" class="client">
+        <img src="imageseugene.jpg" alt="Client 2" class="client">
+        <img src="love_therapy_thursday_logo.jpg" alt="Client 3" class="client">
+      </div>
+    </section>
+
+    <section class="preview container">
+      <h2>Offerings</h2>
+      <div class="grid-3">
+        <article class="offer-card">
+          <h3>Books</h3>
+          <p>Prayerful, practical frameworks — read the pillars of a grown man’s life.</p>
+          <img src="books.jpg" alt="" class="imghome">
+        </article>
+        <article class="offer-card">
+          <h3>Tutorials</h3>
+          <p>Video systems for money, structure and parenting.</p>
+          <img src="tutorial.jpg" alt="" class="imghome">
+        </article>
+        <article class="offer-card">
+          <h3>Mentorship</h3>
+          <p>Small cohorts. Direct accountability. Build in community.</p>
+          <img src="mentorship.jpeg" alt="" class="imghome">
+        </article>
+      </div>
+    </section>
+
+    <section class="testimonials container">
+      <h2>Voices from the Circle</h2>
+      <div class="slider" id="testSlider" aria-live="polite">
+        <div class="slide">“He speaks truth. I finally built my company.” — T. Okoro</div>
+        <div class="slide">“A real father. A real system.” — R. Silva</div>
+        <div class="slide">“My marriage and business leveled up.” — K. Mensah</div>
+      </div>
+    </section>
+    <section class="faq-section">
+  <div class="faq-header">
+    <h2>Frequently Asked Questions</h2>
+    <p>Find answers to the most common questions below</p>
+  </div>
+
+  <div class="faq-container">
+    <!-- FAQ 1 -->
+    <div class="faq-item">
+   
+      <div class="faq-question">
+        <span>How can I contact support?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        You can reach our support team via the contact form or email us directly. We usually reply within 24 hours.
+      </div>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="faq-item">
+    
+      <div class="faq-question">
+        <span>Is my data secure?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        Yes, we use end-to-end encryption and secure servers to keep your data private and safe.
+      </div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="faq-item">
+ 
+      <div class="faq-question">
+        <span>What payment methods do you accept?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        We accept credit cards, PayPal, and major digital wallets for secure and fast transactions.
+      </div>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="faq-item">
+     
+      <div class="faq-question">
+        <span>Can I request a refund?</span>
+        <span class="faq-toggle">+</span>
+      </div>
+      <div class="faq-answer">
+        Yes, refunds can be requested within 14 days of purchase if you’re unsatisfied with the service.
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>© <span id="year"></span> SURROGATE FATHER</div>
+      <nav class="foot-nav">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+
+</body>
+ <script>
+ const faqItems = document.querySelectorAll(".faq-item");
+
+  faqItems.forEach(X => {
+    X.addEventListener("click", () => {
+      X.classList.toggle("active");
+    });
+  });
+
+</script>
+
+</html>
