@@ -106,6 +106,7 @@
             flex-direction: column;
             cursor: pointer;
             gap: 4px;
+            margin-left:4px;
         }
 
         .hamburger span {
@@ -126,6 +127,7 @@
             letter-spacing: 0.5px;
             transition: all 0.4s ease;
             box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+            
         }
 
         .cta-nav:hover {
@@ -702,6 +704,93 @@
         .fade-in {
             animation: fadeInUp 1s ease;
         }
+        /* Basic Styles */
+.site-footer {
+    background-color: #333;
+    color: #f4f4f4;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-column {
+    flex: 1; /* Distributes space equally among columns */
+    min-width: 250px; /* Prevents columns from getting too narrow */
+}
+
+.footer-column h4 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* Links Section */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #f4f4f4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #1abc9c;
+}
+
+/* Social Media Section */
+.social-icons a img {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+    transform: translateY(-5px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+        display: flex;
+    }
+    
+    .footer-column {
+        margin-bottom: 20px;
+    }
+}
+
+
+
     </style>
 </head>
 <body>
@@ -722,7 +811,7 @@
                     <li><a href="contact.html">Contact</a></li>
                   <li><a href="privacy.html">Privacy policy</a></li>
                 </ul>
-                <a href="#coaching" class="cta-nav">Get Coaching</a>
+                <a href="mentorship.html" class="cta-nav">Get Coaching</a>
             </nav>
         </div>
     </header>
@@ -745,7 +834,7 @@
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
-                    <h3>$50M+</h3>
+                    <h3>$70k+</h3>
                     <p>Revenue Generated</p>
                 </div>
                 <div class="stat-item">
@@ -753,11 +842,11 @@
                     <p>Lives Transformed</p>
                 </div>
                 <div class="stat-item">
-                    <h3>500+</h3>
+                    <h3>60+</h3>
                     <p>Speaking Events</p>
                 </div>
                 <div class="stat-item">
-                    <h3>15+</h3>
+                    <h3>5+</h3>
                     <p>Years Excellence</p>
                 </div>
             </div>
@@ -771,12 +860,13 @@
                 <div class="about-text">
                     <h2>From Broke to Breakthrough</h2>
                     <p>I wasn't born into wealth. I was broke, desperate, and tired of watching others live the life I wanted. That pain became my fuel, and that fuel built an empire.</p>
-                    <p>Today, I've personally generated over $50 million for my clients and transformed thousands of lives. My mission is simple: turn ambitious individuals like you into unstoppable forces who don't just succeed—they dominate.</p>
+                    <p>Today, I've personally generated over $50 thousand for my clients and transformed thousands of lives. My mission is simple: turn ambitious individuals like you into unstoppable forces who don't just succeed—they dominate.</p>
                     <div class="achievements">
                         <div class="achievement">Motivational Speaker</div>
                         <div class="achievement">Times Bestseller</div>
                         <div class="achievement">Serial Entrepreneur</div>
-                        <div class="achievement">Elite Coach</div>
+                        <div class="achievement"> lifestyle Coach</div>
+                        <div class="achievement"> personal trainee</div>
                     </div>
                 </div>
             </div>
@@ -785,7 +875,7 @@
 
     <section class="community" id="community">
         <div class="container">
-            <h2>The Elite Brotherhood</h2>
+            <h2>The surrogate father </h2>
             <p class="community-subtitle">Where Champions Are Made</p>
             <div class="community-grid">
                 <div class="community-card">
@@ -804,7 +894,7 @@
                     <p>Exclusive training materials, deal flow opportunities, and insider strategies that aren't available anywhere else. Get the unfair advantage you need to dominate.</p>
                 </div>
             </div>
-            <a href="#join" class="btn-primary">Join The Brotherhood - $497/Month</a>
+            <a href="#join" class="btn-primary">Join The Brotherhood</a>
         </div>
     </section>
 
@@ -813,17 +903,17 @@
             <h2>Success Stories That Speak Volumes</h2>
             <div class="testimonial-grid">
                 <div class="testimonial">
-                    <p>Marcus didn't just change my business—he rewired my entire mindset. From $50K to $2.8M in revenue in 18 months. The man doesn't just talk the talk, he delivers results that speak louder than words.</p>
+                    <p>The surrogate father didn't just change my business—he rewired my entire mindset. From $5K to $125k in revenue in 18 months. The man doesn't just talk the talk, he delivers results that speak louder than words.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">JD</div>
                         <div class="testimonial-info">
                             <h4>Jake Davidson</h4>
-                            <span>Real Estate Empire Builder</span>
+                            <span>Real Estate manager</span>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p>The brotherhood isn't just a community—it's a family of warriors who lift each other up. The connections I've made here have been worth millions in business deals and lifelong partnerships.</p>
+                    <p>The  surrogate father community isn't just a community—it's a family of warriors who lift each other up. The connections I've made here have been worth thousands in business deals and lifelong partnerships.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">MC</div>
                         <div class="testimonial-info">
@@ -833,11 +923,11 @@
                     </div>
                 </div>
                 <div class="testimonial">
-                    <p>Marcus cuts through the BS and gives you the raw, unfiltered truth. His strategies took my agency from 6 to 8 figures. If you're serious about success, this is your guy.</p>
+                    <p> The surrogate cuts through the BS and gives you the raw, unfiltered truth. concerning my health and diet transformed my life and buisiness. Truly our buisiness choices are affected by our lifestyle choices.</p>
                     <div class="testimonial-author">
                         <div class="testimonial-avatar">RM</div>
                         <div class="testimonial-info">
-                            <h4>Robert Miles</h4>
+                            <h4>Robert.k. Miles</h4>
                             <span>Digital Agency Owner</span>
                         </div>
                     </div>
@@ -848,17 +938,46 @@
 
     <section class="final-cta">
         <div class="container">
-            <h2>Your Empire Awaits</h2>
+            <h2>Your dream life Awaits</h2>
             <p>Stop making excuses. Stop waiting for the "perfect" moment. Stop watching from the sidelines while others build the life you want. Your time is now. Your moment is here.</p>
-            <a href="#apply" class="btn-primary">Apply For Elite Coaching</a>
+            <a href="mentorship.html" class="btn-primary">Apply For Elite Coaching</a>
         </div>
     </section>
 
-    <footer class="footer">
-        <div class="container">
-            <p> 2025 Surrogate father . All rights reserved.</p>
+    <footer class="site-footer">
+    <div class="footer-container">
+        <!-- About Section -->
+        <div class="footer-column about-us">
+            <h4>About Us</h4>
+            <p>I am a lifestyle coach that helps people navigate life challenges by changing thier lifestyle</p>
         </div>
-    </footer>
+
+        <!-- Links Section -->
+        <div class="footer-column links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="book-shop.html">Products</a></li>
+                <li><a href="offerings.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Social Media Section -->
+        <div class="footer-column social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+                <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2025 surrogate father. All rights reserved.</p>
+    </div>
+</footer>
+
 
     <script>
         // Mobile menu toggle
