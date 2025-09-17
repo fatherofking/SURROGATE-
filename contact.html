@@ -1,264 +1,711 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Fatherly Wisdom</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Premium Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --deep-brown: #2D1810;
+            --medium-brown: #3D2317;
+            --light-brown: #8B6914;
+            --accent-brown: #B8860B;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --light-grey: #CCCCCC;
+            --dark-grey: #666666;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            background: var(--black);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .slide-up {
+            opacity: 0;
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .fade-in.visible,
+        .slide-up.visible {
+            animation-delay: 0.2s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(45, 24, 16, 0.8) 0%, rgba(10, 10, 10, 0.9) 100%), 
+                        url('https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1920&h=1080&fit=crop&auto=format') center/cover;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--light-grey);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        .hero-button {
+            display: inline-block;
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-button:hover {
+            background: var(--light-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--white);
+        }
+
+        /* Contact Form Section */
+        .contact-form-section {
+            background: var(--medium-brown);
+            padding: 8rem 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: var(--deep-brown);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 1rem;
+            border: 2px solid var(--medium-brown);
+            border-radius: 10px;
+            background: var(--black);
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-brown);
+            box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.2);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-select {
+            cursor: pointer;
+        }
+
+        .form-button {
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 1.2rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-button:hover {
+            background: var(--light-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Location & Contact Info */
+        .location-section {
+            background: var(--black);
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-details h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--accent-brown);
+        }
+
+        .contact-item {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--medium-brown);
+        }
+
+        .contact-item:last-child {
+            border-bottom: none;
+        }
+
+        .contact-label {
+            font-weight: 600;
+            color: var(--accent-brown);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-value {
+            color: var(--light-grey);
+            font-size: 1rem;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            filter: grayscale(20%) contrast(1.2);
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(45, 24, 16, 0.1);
+            pointer-events: none;
+        }
+
+        /* Quick Contact Cards */
+        .quick-contact {
+            background: var(--deep-brown);
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--medium-brown);
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--accent-brown);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent-brown);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-card:hover .card-icon {
+            background: var(--light-brown);
+        }
+
+        .card-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .card-info {
+            color: var(--light-grey);
+            font-size: 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-brown);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--light-brown);
+            transform: translateY(-2px);
+        }
+
+        .social-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--white);
+        }
+
+        /* Closing CTA */
+        .closing-cta {
+            background: var(--black);
+            text-align: center;
+            padding: 6rem 0;
+        }
+
+        .closing-cta h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 2rem;
+            color: var(--white);
+        }
+
+        .closing-cta p {
+            font-size: 1.2rem;
+            color: var(--light-grey);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: var(--light-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .location-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+
+            .contact-form-section {
+                padding: 5rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-button,
+            .form-button,
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
-<style>
-.myFather{
-  font-size: 50px;
-  font-weight: bold;
-}
-.navbar ul{
-  display: flex;
-  justify-content: space-around;
-  list-style-type: none;
-
-}
-.my-image {
-  width: 500px;
-  margin: 20px auto;
-  border-radius:40px
-}
-
-/* Styles for screens smaller than 768px */
-@media (max-width: 768px) {
-  .my-image {
-    width: 100%; /* Full width on smaller screens */
-    margin: 5px;
-    border-radius:40px;
-  }
-}
-.heroDiv, .contactform{
-  place-items: center;
-}
-/* Contact Section Wrapper */
-.contactform {
-  background: #0d0d0d; /* black background */
-  padding: 60px 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Section Container */
-.contact-section .container {
-  max-width: 600px;
-  width: 100%;
-  background: #1a1a1a; /* dark grey card */
-  padding: 40px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0,170,255,0.3);
-  animation: glowPulse 3s infinite alternate;
-}
-
-/* Glow Animation */
-@keyframes glowPulse {
-  from {
-    box-shadow: 0 0 15px rgba(0,170,255,0.3), 0 0 30px rgba(0,170,255,0.1);
-  }
-  to {
-    box-shadow: 0 0 25px rgba(0,170,255,0.6), 0 0 50px rgba(0,170,255,0.2);
-  }
-}
-
-/* Section Heading */
-.contact-section h2 {
-  font-size: 28px;
-  text-align: center;
-  margin-bottom: 25px;
-  color: #00aaff; /* bright blue accent */
-}
-
-/* Form Groups */
-.form-group {
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-weight: 600;
-  margin-bottom: 8px;
-  color: #ccc; /* light grey text */
-}
-
-.form-group input,
-.form-group textarea {
-  background: #111;
-  color: #fff;
-  padding: 12px 14px;
-  border: 1px solid #333;
-  border-radius: 8px;
-  font-size: 16px;
-  outline: none;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-/* Hover + Focus States */
-.form-group input:hover,
-.form-group textarea:hover {
-  border-color: #0099ff;
-  box-shadow: 0 0 8px rgba(0,170,255,0.5);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  border-color: #00aaff;
-  box-shadow: 0 0 12px rgba(0,170,255,0.7);
-}
-
-/* Button Styling */
-.btn {
-  display: inline-block;
-  width: 100%;
-  padding: 14px 20px;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
-  transition: all 0.3s ease;
-}
-
-/* Blue Button */
-.gold-btn {
-  background: linear-gradient(135deg, #00aaff, #0066ff);
-  color: #fff;
-}
-
-.gold-btn:hover {
-  background: linear-gradient(135deg, #0066ff, #0044cc);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0,170,255,0.5);
-}
-
-/* Form Response */
-.form-response {
-  margin-top: 20px;
-  text-align: center;
-  font-size: 15px;
-  color: #aaa;
-}
-
-/* Responsive */
-@media (max-width: 480px) {
-  .contact-section .container {
-    padding: 25px;
-  }
-
-  .contact-section h2 {
-    font-size: 24px;
-  }
-}
-
-  h1{
-    display:flex;
-    justify-content:center;
-  }
-</style>
-<body class="dark-bg gold-text">
-
-  <!-- Header -->
-  <header>
-    <div class="logo">SURROGATE FATHER</div>
-    <nav>
-      <a href="index.html">Home</a>
-       <a href="about.html">About</a>
-  <a href="offerings.html">Offerings</a>
-  <a href="book-shop.html">Shop</a>
-  <a href="mentorship.html">Mentorship</a>
-  <a href="resources.html">Resources</a>
-  <a href="events.html">Events</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
-  <a href="members.html">Members</a>
-    <a href="privacy.html">privacy policy</a>
-  
-    </nav>
-    <div id="hamburger">&#9776;</div>
-  </header>
-   
-   
-    <div id="sidebar">
-      <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-  <a href="offerings.html">Offerings</a>
-  <a href="book-shop.html">Shop</a>
-  <a href="mentorship.html">Mentorship</a>
-  <a href="resources.html">Resources</a>
-  <a href="events.html">Events</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
-  <a href="members.html">Members</a>
-    <a href="privacy.html">Privacy policy</a>
-  
-  </div>
-
-  <!-- Hero -->
-  <div class="heroDiv">
-  <section class="hero contact-hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-     <div> <h1>Get in Touch</h1>
-      <p>Step closer to guidance, mentorship, and wisdom you can trust.</p></div>
-      <img src="contact-us.jpeg" alt="" class="my-image">
-    </div>
-    
-  </section>
-  </div>
-  <!-- Contact Form Section -->
-   <div class="contactform">
-  <section class="contact-section">
-    <div class="container">
-      <h2>Send a Message</h2>
-      <form id="contactForm">
-        <div class="form-group">
-          <label for="fname">Full Name</label>
-          <input type="text" id="fname" name="fname" required>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>We'd Love to Hear From You</h1>
+                <p class="hero-subtitle">Reach out for mentorship, inquiries, or partnerships.</p>
+                <a href="#contact-form" class="hero-button">Get In Touch</a>
+            </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email Address</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn gold-btn">Send Message</button>
-      </form>
-      <div id="formResponse" class="form-response"></div>
-    </div>
-  </section>
-   </div>
-  <!-- Newsletter Signup -->
-  <section class="newsletter">
-    <div class="container">
-      <h2>Stay Connected</h2>
-      <p>Join thousands learning wealth, wisdom, and life guidance.</p>
-      <form id="newsletterForm">
-        <input type="email" id="newsletterEmail" placeholder="Enter your email" required>
-        <button type="submit" class="btn gold-btn">Subscribe</button>
-      </form>
-      <div id="newsletterResponse" class="form-response"></div>
-    </div>
-  </section
+    </section>
 
- 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <p>© 2025 Fatherly Wisdom | Built for Legacy</p>
-  </footer>
+    <!-- Contact Form Section -->
+    <section class="contact-form-section" id="contact-form">
+        <div class="container">
+            <h2 class="section-title slide-up">Send Us a Message</h2>
+            <div class="form-container slide-up">
+                <!-- Replace YOUR_MAILCHIMP_ACTION_URL with your actual Mailchimp form action URL -->
+                <form class="contact-form" action="YOUR_MAILCHIMP_ACTION_URL" method="POST">
+                    <div class="form-group">
+                        <label for="full-name" class="form-label">Full Name</label>
+                        <input type="text" id="full-name" name="FNAME" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="EMAIL" class="form-input" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <select id="subject" name="SUBJECT" class="form-select" required>
+                            <option value="">Please select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="mentorship">Mentorship</option>
+                            <option value="partnership">Partnership</option>
+                            <option value="support">Support</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="MESSAGE" class="form-textarea" placeholder="Tell us about your project, goals, or how we can help you..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
-  <script src="script.js"></script>
-  
+    <!-- Location & Contact Info -->
+    <section class="section location-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Visit Our Office</h2>
+            <div class="location-content">
+                <div class="contact-details fade-in">
+                    <h3>Get In Touch</h3>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Address</div>
+                        <div class="contact-value">
+                            123 Business District<br>
+                            Downtown Plaza, Suite 456<br>
+                            New York, NY 10001
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Phone</div>
+                        <div class="contact-value">+1 (555) 123-4567</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Email</div>
+                        <div class="contact-value">hello@premiumservices.com</div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-label">Business Hours</div>
+                        <div class="contact-value">
+                            Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: 10:00 AM - 4:00 PM<br>
+                            Sunday: Closed
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="map-container fade-in">
+                    <!-- Replace with your actual Google Maps embed URL -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2034.3325799920285!2d-97.1429632755377!3d49.805432855630286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52ea75f0911e9c5f%3A0x5460e2841ad770fa!2sUniversity%20of%20Manitoba!5e0!3m2!1sen!2sng!4v1758140118986!5m2!1sen!2sng" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade   loading="lazy""></iframe>
+                           
+                    
+                    <div class="map-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Contact Cards -->
+    <section class="section quick-contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Connect With Us</h2>
+            <div class="contact-cards">
+                <div class="contact-card slide-up">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                    </div>
+                    <h4 class="card-title">Visit Us</h4>
+                    <p class="card-info">123 Business District<br>New York, NY 10001</p>
+                </div>
+                
+                <div class="contact-card slide-up">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/>
+                        </svg>
+                    </div>
+                    <h4 class="card-title">Call Us</h4>
+                    <p class="card-info">+1 (555) 123-4567</p>
+                </div>
+                
+                <div class="contact-card slide-up">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                    </div>
+                    <h4 class="card-title">Email Us</h4>
+                    <p class="card-info">hello@premiumservices.com</p>
+                </div>
+                
+                <div class="contact-card slide-up">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+                        </svg>
+                    </div>
+                    <h4 class="card-title">Follow Us</h4>
+                    <p class="card-info">Connect on social media</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="closing-cta">
+        <div class="container">
+            <div class="fade-in">
+                <h2>Let's Build Something Meaningful Together</h2>
+                <p>Join our community and stay updated with the latest insights, opportunities, and exclusive content.</p>
+                <!-- Replace YOUR_MAILCHIMP_NEWSLETTER_URL with your actual Mailchimp newsletter signup URL -->
+                <a href="YOUR_MAILCHIMP_NEWSLETTER_URL" class="cta-button">Join Our Newsletter</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth fade-in and slide animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add subtle parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Form submission enhancement
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            const button = this.querySelector('.form-button');
+            const originalText = button.textContent;
+            
+            button.textContent = 'Sending...';
+            button.disabled = true;
+            
+            // Reset button after 3 seconds (adjust based on your needs)
+            setTimeout(() => {
+                button.textContent = originalText;
+                button.disabled = false;
+            }, 3000);
+        });
+
+        // Add focus effects to form inputs
+        document.querySelectorAll('.form-input, .form-select, .form-textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.style.transform = 'translateY(-2px)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.parentElement.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
 </body>
 </html>
 
-<!-- Contact form page content here -->
 
 
 
