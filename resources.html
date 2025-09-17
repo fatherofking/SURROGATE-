@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Resource Hub</title>
+    <title>Our Resources - Premium Services</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -11,82 +12,99 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --deep-brown: #2D1810;
+            --medium-brown: #3D2317;
+            --light-brown: #8B6914;
+            --accent-brown: #B8860B;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --light-grey: #CCCCCC;
+            --dark-grey: #666666;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
             line-height: 1.6;
+            color: var(--white);
+            background: var(--black);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header */
-        .header {
-            padding: 2rem 0;
-            position: relative;
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .logo {
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(45deg, #3b82f6, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
         }
 
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
+        .slide-left {
+            opacity: 0;
+            animation: slideInLeft 0.8s ease forwards;
         }
 
-        .nav-links a:hover {
-            color: #60a5fa;
+        .slide-right {
+            opacity: 0;
+            animation: slideInRight 0.8s ease forwards;
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #3b82f6;
-            transition: width 0.3s ease;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
+        .fade-in.visible,
+        .slide-left.visible,
+        .slide-right.visible {
+            animation-delay: 0.2s;
         }
 
         /* Hero Section */
         .hero {
-            padding: 8rem 0;
-            text-align: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--deep-brown) 0%, var(--black) 70%, var(--medium-brown) 100%);
+            display: flex;
+            align-items: center;
             position: relative;
+            overflow: hidden;
         }
 
         .hero::before {
@@ -96,461 +114,731 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="%23B8860B" opacity="0.1"/><circle cx="80" cy="40" r="1" fill="%23B8860B" opacity="0.1"/><circle cx="40" cy="80" r="1.5" fill="%23B8860B" opacity="0.1"/></svg>');
+            background-size: 200px 200px;
         }
 
         .hero-content {
-            position: relative;
             z-index: 2;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: clamp(3rem, 6vw, 6rem);
-            font-weight: 800;
+            font-size: clamp(3.5rem, 8vw, 6.5rem);
+            font-weight: 700;
             margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, #ffffff, #60a5fa, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: slideInUp 0.8s ease-out;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: slideInUp 0.8s ease-out 0.2s both;
+        .hero-subtitle {
+            font-size: clamp(1.3rem, 3vw, 2rem);
+            color: var(--light-grey);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
         }
 
-        .cta-button {
+        .hero-button {
             display: inline-block;
-            padding: 1rem 2.5rem;
-            background: linear-gradient(45deg, #3b82f6, #60a5fa);
-            color: white;
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 1.2rem 3rem;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
-            animation: slideInUp 0.8s ease-out 0.4s both;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(59, 130, 246, 0.4);
+        .hero-button:hover {
+            background: var(--light-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(184, 134, 11, 0.3);
         }
 
-        /* Resource Grid */
-        .resources {
-            padding: 8rem 0;
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
         }
 
         .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             text-align: center;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 4rem;
-            background: linear-gradient(45deg, #ffffff, #60a5fa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            margin-bottom: 3rem;
+            color: var(--white);
         }
 
-        .resource-grid {
+        /* Intro Section */
+        .intro {
+            background: var(--medium-brown);
+            text-align: center;
+        }
+
+        .intro-content {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .intro p {
+            font-size: 1.3rem;
+            color: var(--light-grey);
+            line-height: 1.8;
+        }
+
+        /* Offerings Grid */
+        .offerings {
+            background: var(--black);
+        }
+
+        .offerings-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 2.5rem;
+            margin-top: 4rem;
         }
 
-        .resource-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(59, 130, 246, 0.1));
-            border: 1px solid rgba(59, 130, 246, 0.3);
+        .offering-card {
+            position: relative;
+            background: var(--deep-brown);
             border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 400px;
+        }
+
+        .offering-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.4);
+        }
+
+        .offering-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        .resource-card::before {
+        .offering-image::before {
             content: '';
             position: absolute;
             top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
-            transition: left 0.5s ease;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(45, 24, 16, 0.3);
+            transition: all 0.3s ease;
         }
 
-        .resource-card:hover::before {
-            left: 100%;
+        .offering-card:hover .offering-image {
+            transform: scale(1.05);
         }
 
-        .resource-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
-            border-color: #60a5fa;
+        .offering-card:hover .offering-image::before {
+            background: rgba(184, 134, 11, 0.4);
         }
 
-        .resource-icon {
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(45deg, #3b82f6, #60a5fa);
-            border-radius: 15px;
+        .offering-content {
+            padding: 2rem;
+            height: 150px;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
-        .resource-card h3 {
+        .offering-title {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 2;
             font-size: 1.5rem;
-            font-weight: 600;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .offering-description {
+            color: var(--light-grey);
             margin-bottom: 1rem;
-            color: #ffffff;
+            font-size: 0.95rem;
         }
 
-        .resource-card p {
-            opacity: 0.8;
-            margin-bottom: 1.5rem;
-        }
-
-        .resource-link {
-            color: #60a5fa;
+        .offering-button {
+            display: inline-block;
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 0.8rem 1.8rem;
             text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .resource-link:hover {
-            color: #ffffff;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 6rem 0;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(0, 0, 0, 0.3));
-            border-top: 1px solid rgba(59, 130, 246, 0.3);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 3rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
             text-align: center;
+            font-size: 0.9rem;
         }
 
-        .stat-item h3 {
-            font-size: 3rem;
-            font-weight: 700;
-            color: #60a5fa;
-            margin-bottom: 0.5rem;
+        .offering-button:hover {
+            background: var(--light-brown);
+            transform: translateY(-2px);
         }
 
-        .stat-item p {
-            opacity: 0.8;
+        /* Detailed Breakdown */
+        .breakdown {
+            background: var(--deep-brown);
+        }
+
+        .breakdown-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+            padding: 3rem 0;
+        }
+
+        .breakdown-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .breakdown-item:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .breakdown-image {
+            width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .breakdown-content h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-brown);
+        }
+
+        .breakdown-content p {
             font-size: 1.1rem;
+            color: var(--light-grey);
+            margin-bottom: 2rem;
+            line-height: 1.8;
         }
 
-        /* Premium Features */
-        .premium-features {
-            padding: 8rem 0;
+        .benefits-list {
+            list-style: none;
         }
 
-        .features-grid {
+        .benefits-list li {
+            color: var(--white);
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .benefits-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-brown);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: var(--deep-brown);
+        }
+
+        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
+            margin-top: 4rem;
         }
 
-        .feature-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1.5rem;
+        .testimonial-card {
+            background: var(--medium-brown);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 2px solid var(--accent-brown);
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(45deg, #3b82f6, #60a5fa);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
+        .testimonial-card:hover {
+            transform: translateY(-5px);
         }
 
-        .feature-content h3 {
-            font-size: 1.3rem;
+        .testimonial-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--accent-brown);
+            margin: 0 auto 1.5rem;
+            border: 3px solid var(--accent-brown);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--light-grey);
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-name {
+            color: var(--white);
             font-weight: 600;
             margin-bottom: 0.5rem;
-            color: #ffffff;
         }
 
-        .feature-content p {
-            opacity: 0.8;
+        .testimonial-title {
+            color: var(--accent-brown);
+            font-size: 0.9rem;
         }
 
-        /* Footer */
-        .footer {
-            padding: 4rem 0;
-            background: rgba(0, 0, 0, 0.5);
-            border-top: 1px solid rgba(59, 130, 246, 0.3);
+        /* Pricing */
+        .pricing {
+            background: var(--black);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+
+        .pricing-card {
+            background: var(--medium-brown);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--accent-brown);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-10px);
+        }
+
+        .pricing-header {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .pricing-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, var(--medium-brown) 100%);
+        }
+
+        .pricing-content {
+            padding: 2.5rem;
+        }
+
+        .pricing-title {
+            font-size: 1.8rem;
+            color: var(--white);
+            margin-bottom: 1rem;
             text-align: center;
         }
 
-        /* Animations */
-        @keyframes slideInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-brown);
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
-        /* Floating particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 2rem;
         }
 
-        .particle {
+        .pricing-features li {
+            color: var(--light-grey);
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .pricing-features li::before {
+            content: '•';
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: #3b82f6;
-            border-radius: 50%;
-            animation: float 6s infinite;
+            left: 0;
+            color: var(--accent-brown);
+            font-weight: bold;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
+        .pricing-button {
+            display: block;
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-align: center;
         }
 
-        /* Responsive */
+        .pricing-button:hover {
+            background: var(--light-brown);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--black);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            color: var(--light-grey);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 1.2rem 3rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: var(--light-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .hero {
-                padding: 4rem 0;
-            }
-            
-            .resource-grid {
+            .offerings-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+
+            .breakdown-item {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .breakdown-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+
+            .section {
+                padding: 4rem 0;
             }
         }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-
-    <header class="header">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <nav class="nav">
-                <div class="logo">ResourceHub</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#resources">Resources</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Premium Resources</h1>
-                <p>Unlock exclusive access to million-dollar resources, tools, and insights that will transform your business and accelerate your success.</p>
-                <a href="#resources" class="cta-button">Explore Resources</a>
+            <div class="hero-content fade-in">
+                <h1>Our Resources</h1>
+                <p class="hero-subtitle">Discover premium services crafted to elevate your experience and exceed your expectations</p>
+                <a href="#offerings" class="hero-button">Explore Services</a>
             </div>
         </div>
     </section>
 
-    <section class="resources" id="resources">
+    <!-- Intro Section -->
+    <section class="section intro">
         <div class="container">
-            <h2 class="section-title">Premium Resource Collection</h2>
+            <div class="intro-content fade-in">
+                <p>We believe in delivering exceptional value through carefully curated services that combine innovation, craftsmanship, and personalized attention. Each offering is designed to transform your vision into reality with uncompromising quality and attention to detail.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offerings Grid -->
+    <section class="section offerings" id="offerings">
+        <div class="container">
+            <h2 class="section-title fade-in">Premium Services</h2>
+            <div class="offerings-grid">
+                <!-- Replace 'your-image-1.jpg' with your actual image file names -->
+                <div class="offering-card fade-in">
+                    <div class="offering-image" style="background-image: url('images/luxury-consulting.jpg');">
+                        <h3 class="offering-title">Luxury Consulting</h3>
+                    </div>
+                    <div class="offering-content">
+                        <p class="offering-description">Strategic guidance tailored to your unique needs, combining industry expertise with innovative solutions.</p>
+                        <a href="#" class="offering-button">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="offering-card fade-in">
+                    <div class="offering-image" style="background-image: url('images/executive-coaching.jpg');">
+                        <h3 class="offering-title">Executive Coaching</h3>
+                    </div>
+                    <div class="offering-content">
+                        <p class="offering-description">Personalized leadership development programs designed to unlock your full potential and drive success.</p>
+                        <a href="#" class="offering-button">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="offering-card fade-in">
+                    <div class="offering-image" style="background-image: url('images/brand-strategy.jpg');">
+                        <h3 class="offering-title">Brand Strategy</h3>
+                    </div>
+                    <div class="offering-content">
+                        <p class="offering-description">Comprehensive brand development that positions your business for long-term growth and market leadership.</p>
+                        <a href="#" class="offering-button">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="offering-card fade-in">
+                    <div class="offering-image" style="background-image: url('images/digital-transformation.jpg');">
+                        <h3 class="offering-title">Digital Transformation</h3>
+                    </div>
+                    <div class="offering-content">
+                        <p class="offering-description">End-to-end digital solutions that modernize your operations and enhance customer experiences.</p>
+                        <a href="#" class="offering-button">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="offering-card fade-in">
+                    <div class="offering-image" style="background-image: url('images/premium-events.jpg');">
+                        <h3 class="offering-title">Premium Events</h3>
+                    </div>
+                    <div class="offering-content">
+                        <p class="offering-description">Exclusive event planning and management services that create unforgettable experiences for your guests.</p>
+                        <a href="#" class="offering-button">Learn More</a>
+                    </div>
+                </div>
+
+                <div class="offering-card fade-in">
+                    <div class="offering-image" style="background-image: url('images/concierge-services.jpg');">
+                        <h3 class="offering-title">Concierge Services</h3>
+                    </div>
+                    <div class="offering-content">
+                        <p class="offering-description">Personalized lifestyle management services designed to simplify your life and maximize your time.</p>
+                        <a href="#" class="offering-button">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Breakdown -->
+    <section class="section breakdown">
+        <div class="container">
+            <h2 class="section-title fade-in">Service Details</h2>
             
-            <div class="resource-grid">
-                <div class="resource-card">
-                    <div class="resource-icon">📊</div>
-                    <h3>Business Analytics Suite</h3>
-                    <p>Advanced analytics tools and dashboards that provide deep insights into your business performance with AI-powered recommendations.</p>
-                    <a href="#" class="resource-link">Access Now →</a>
+            <!-- Replace 'breakdown-image-1.jpg' with your actual image file names -->
+            <div class="breakdown-item">
+                <div class="breakdown-image slide-left" style="background-image: url('images/breakdown-consulting.jpg');"></div>
+                <div class="breakdown-content slide-right">
+                    <h3>Luxury Consulting Excellence</h3>
+                    <p>Our consulting services provide strategic insights and actionable solutions tailored to your specific business challenges. We combine deep industry knowledge with innovative thinking to deliver results that exceed expectations.</p>
+                    <ul class="benefits-list">
+                        <li>Comprehensive market analysis and strategic planning</li>
+                        <li>Customized solutions for complex business challenges</li>
+                        <li>Ongoing support and implementation guidance</li>
+                        <li>Access to exclusive industry networks and resources</li>
+                    </ul>
                 </div>
+            </div>
 
-                <div class="resource-card">
-                    <div class="resource-icon">🚀</div>
-                    <h3>Growth Acceleration Kit</h3>
-                    <p>Proven strategies and frameworks used by Fortune 500 companies to scale rapidly and dominate their markets.</p>
-                    <a href="#" class="resource-link">Download →</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-icon">💡</div>
-                    <h3>Innovation Lab Access</h3>
-                    <p>Exclusive access to cutting-edge research, emerging trends, and breakthrough technologies before they go mainstream.</p>
-                    <a href="#" class="resource-link">Explore →</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-icon">🎯</div>
-                    <h3>Strategic Planning Tools</h3>
-                    <p>Professional-grade planning templates and methodologies used by top consulting firms worldwide.</p>
-                    <a href="#" class="resource-link">Get Started →</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-icon">🔥</div>
-                    <h3>Market Intelligence</h3>
-                    <p>Real-time market data, competitor analysis, and industry insights that give you the competitive edge.</p>
-                    <a href="#" class="resource-link">View Data →</a>
-                </div>
-
-                <div class="resource-card">
-                    <div class="resource-icon">⚡</div>
-                    <h3>Automation Blueprints</h3>
-                    <p>Ready-to-implement automation workflows that save thousands of hours and optimize your operations.</p>
-                    <a href="#" class="resource-link">Automate →</a>
+            <div class="breakdown-item">
+                <div class="breakdown-image slide-right" style="background-image: url('images/breakdown-coaching.jpg');"></div>
+                <div class="breakdown-content slide-left">
+                    <h3>Executive Leadership Development</h3>
+                    <p>Transform your leadership capabilities through our personalized coaching programs. Our experienced coaches work with you to develop the skills and mindset needed for exceptional leadership in today's dynamic business environment.</p>
+                    <ul class="benefits-list">
+                        <li>One-on-one coaching with certified professionals</li>
+                        <li>360-degree feedback and assessment tools</li>
+                        <li>Customized development plans and milestones</li>
+                        <li>Exclusive leadership retreats and workshops</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats">
+    <!-- Testimonials -->
+    <section class="section testimonials">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <h3>$2.5M+</h3>
-                    <p>Average Revenue Impact</p>
+            <h2 class="section-title fade-in">Client Stories</h2>
+            <!-- Replace 'testimonial-1.jpg' with your actual client photo file names -->
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-image" style="background-image: url('images/testimonial-sarah.jpg');"></div>
+                    <p class="testimonial-text">"The level of service and attention to detail exceeded all our expectations. Their team transformed our business strategy completely."</p>
+                    <h4 class="testimonial-name">Sarah Mitchell</h4>
+                    <p class="testimonial-title">CEO, Innovation Corp</p>
                 </div>
-                <div class="stat-item">
-                    <h3>10,000+</h3>
-                    <p>Premium Resources</p>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-image" style="background-image: url('images/testimonial-james.jpg');"></div>
+                    <p class="testimonial-text">"Working with them was a game-changer for our organization. The results speak for themselves - 200% growth in just one year."</p>
+                    <h4 class="testimonial-name">James Rodriguez</h4>
+                    <p class="testimonial-title">Founder, Tech Solutions</p>
                 </div>
-                <div class="stat-item">
-                    <h3>500+</h3>
-                    <p>Enterprise Clients</p>
-                </div>
-                <div class="stat-item">
-                    <h3>99.9%</h3>
-                    <p>Uptime Guarantee</p>
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-image" style="background-image: url('images/testimonial-emily.jpg');"></div>
+                    <p class="testimonial-text">"Their luxury concierge service has completely transformed how we manage our executive team's time and productivity."</p>
+                    <h4 class="testimonial-name">Emily Chen</h4>
+                    <p class="testimonial-title">VP Operations, Global Enterprises</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="premium-features" id="features">
+    <!-- Pricing -->
+    <section class="section pricing">
         <div class="container">
-            <h2 class="section-title">Why Choose Premium</h2>
-            
-            <div class="features-grid">
-                <div class="feature-item">
-                    <div class="feature-icon">🔐</div>
-                    <div class="feature-content">
-                        <h3>Exclusive Access</h3>
-                        <p>Get early access to new resources and tools before they're available to the public.</p>
+            <h2 class="section-title fade-in">Service Packages</h2>
+            <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header" style="background-image: url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=400&h=200&fit=crop&auto=format');"></div>
+                    <div class="pricing-content">
+                        <h3 class="pricing-title">Essential</h3>
+                        <div class="pricing-price">$5,000</div>
+                        <ul class="pricing-features">
+                            <li>Initial consultation and assessment</li>
+                            <li>Strategic planning session</li>
+                            <li>Basic implementation support</li>
+                            <li>Email support for 30 days</li>
+                        </ul>
+                        <a href="#" class="pricing-button">Get Started</a>
                     </div>
                 </div>
 
-                <div class="feature-item">
-                    <div class="feature-icon">⚡</div>
-                    <div class="feature-content">
-                        <h3>Lightning Fast</h3>
-                        <p>Optimized infrastructure ensures instant access to all resources with zero downtime.</p>
+                <div class="pricing-card featured fade-in">
+                    <div class="featured-badge">Most Popular</div>
+                    <div class="pricing-header" style="background-image: url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=400&h=200&fit=crop&auto=format');"></div>
+                    <div class="pricing-content">
+                        <h3 class="pricing-title">Professional</h3>
+                        <div class="pricing-price">$15,000</div>
+                        <ul class="pricing-features">
+                            <li>Comprehensive business analysis</li>
+                            <li>Custom strategy development</li>
+                            <li>Full implementation support</li>
+                            <li>Quarterly progress reviews</li>
+                            <li>Priority phone and email support</li>
+                        </ul>
+                        <a href="#" class="pricing-button">Get Started</a>
                     </div>
                 </div>
 
-                <div class="feature-item">
-                    <div class="feature-icon">🎯</div>
-                    <div class="feature-content">
-                        <h3>Personalized Experience</h3>
-                        <p>AI-powered recommendations tailored to your specific industry and business needs.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🛡️</div>
-                    <div class="feature-content">
-                        <h3>Enterprise Security</h3>
-                        <p>Bank-level security with end-to-end encryption and compliance certifications.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">📞</div>
-                    <div class="feature-content">
-                        <h3>24/7 Expert Support</h3>
-                        <p>Direct access to industry experts and dedicated support team around the clock.</p>
-                    </div>
-                </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">📈</div>
-                    <div class="feature-content">
-                        <h3>Proven ROI</h3>
-                        <p>Track your success with detailed analytics and ROI reporting tools.</p>
+                <div class="pricing-card fade-in">
+                    <div class="pricing-header" style="background-image: url('https://images.unsplash.com/photo-1573164574472-797cdf4a583a?w=400&h=200&fit=crop&auto=format');"></div>
+                    <div class="pricing-content">
+                        <h3 class="pricing-title">Enterprise</h3>
+                        <div class="pricing-price">$35,000</div>
+                        <ul class="pricing-features">
+                            <li>Full-service consulting package</li>
+                            <li>Dedicated account manager</li>
+                            <li>Executive coaching included</li>
+                            <li>Monthly strategy sessions</li>
+                            <li>24/7 premium support</li>
+                            <li>Annual strategy retreat</li>
+                        </ul>
+                        <a href="#" class="pricing-button">Get Started</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="footer" id="contact">
+    <!-- CTA Section -->
+    <section class="section cta">
         <div class="container">
-            <p>&copy; 2025 ResourceHub Premium. Transforming businesses worldwide.</p>
+            <div class="fade-in">
+                <h2>Ready to Transform Your Business?</h2>
+                <p>Join hundreds of satisfied clients who have chosen excellence. Let's discuss how our premium services can elevate your success to new heights.</p>
+                <a href="#contact" class="cta-button">Start Your Journey</a>
+            </div>
         </div>
-    </footer>
+    </section>
 
     <script>
-        // Create floating particles
-        function createParticles() {
-            const particles = document.getElementById('particles');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                particles.appendChild(particle);
-            }
-        }
+        // Smooth fade-in and slide animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        // Smooth scrolling for navigation links
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-left, .slide-right').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -564,36 +852,42 @@
             });
         });
 
-        // Animate stats on scroll
-        function animateStats() {
-            const stats = document.querySelectorAll('.stat-item h3');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const finalNumber = entry.target.textContent;
-                        entry.target.style.opacity = '1';
-                        observer.unobserve(entry.target);
-                    }
-                });
-            });
-
-            stats.forEach(stat => {
-                observer.observe(stat);
-            });
-        }
-
-        // Initialize animations
-        window.addEventListener('load', () => {
-            createParticles();
-            animateStats();
-        });
-
-        // Add parallax effect to hero section
+        // Add subtle parallax effect to hero section
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.hero');
-            const speed = scrolled * 0.5;
-            parallax.style.transform = `translateY(${speed}px)`;
+            const hero = document.querySelector('.hero');
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Animate numbers in pricing section when visible
+        const animateNumbers = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const price = entry.target;
+                    const finalNumber = parseInt(price.textContent.replace(/[^0-9]/g, ''));
+                    let current = 0;
+                    const increment = finalNumber / 50;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= finalNumber) {
+                            current = finalNumber;
+                            clearInterval(timer);
+                        }
+                        price.textContent = ' + Math.floor(current).toLocaleString();
+                    }, 30);
+                }
+            });
+        };
+
+        const numberObserver = new IntersectionObserver(animateNumbers, {
+            threshold: 0.5,
+            rootMargin: '0px'
+        });
+
+        document.querySelectorAll('.pricing-price').forEach(price => {
+            numberObserver.observe(price);
         });
     </script>
 </body>
