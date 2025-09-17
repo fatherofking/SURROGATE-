@@ -150,3 +150,140 @@ input, textarea, button{font-family:inherit}
         display: none; /* completely hide sidebar */
       }
     }
+.site-footer {
+    background-color: #333;
+    color: #f4f4f4;
+    padding: 40px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap; /* Allows columns to wrap on smaller screens */
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+}
+
+.footer-column {
+    flex: 1; /* Distributes space equally among columns */
+    min-width: 250px; /* Prevents columns from getting too narrow */
+}
+
+.footer-column h4 {
+    color: #fff;
+    margin-bottom: 20px;
+    font-size: 18px;
+}
+
+/* Links Section */
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li {
+    margin-bottom: 10px;
+}
+
+.footer-column ul li a {
+    color: #f4f4f4;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-column ul li a:hover {
+    color: #1abc9c;
+}
+
+/* Social Media Section */
+.social-icons a  {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover  {
+    transform: translateY(-5px);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #444;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
+        display: flex;
+    }
+    
+    .footer-column {
+        margin-bottom: 20px;
+    }
+}
+#icons{
+width:90px;
+ hieght:90px;
+    font-size:1.3rem;
+}
+/* Container for the social icons */
+.social-icons-container {
+  display: flex;
+  justify-content: center; /* Center icons horizontally */
+  align-items: center; /* Center icons vertically */
+  gap: 20px; /* Space between icons */
+  padding: 20px;
+  background-color: #2c3e50; /* Dark background color for the footer */
+}
+
+/* Individual icon links */
+.social-icon {
+  width: 35px; /* Icon size */
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Rounded shape */
+  transition: transform 0.3s ease, background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Base icon color */
+.social-icon svg {
+  fill: #ffffff; /* White color for the SVG icons */
+  width: 20px; /* SVG size */
+  height: 20px;
+  transition: fill 0.3s ease;
+}
+
+/* Hover effects for each social network */
+.social-icon.facebook:hover {
+  background-color: #3b5998; /* Facebook blue */
+  transform: translateY(-5px); /* Lift the icon slightly */
+}
+
+.social-icon.instagram:hover {
+  background-color: #e4405f; /* Instagram pink/red */
+  transform: translateY(-5px);
+}
+
+.social-icon.linkedin:hover {
+  background-color: #0077b5; /* LinkedIn blue */
+  transform: translateY(-5px);
+}
+
+.social-icon:hover svg {
+  fill: #ffffff;
+}
+
