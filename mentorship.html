@@ -1,72 +1,124 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <title>Mentorship — Apply</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mentorship Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #0d0d0d; /* black background */
+      color: #ffffff;
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem;
+      background: linear-gradient(135deg, #3e2c23, #0d0d0d); /* brown to black gradient */
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #d9d9d9;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 3rem auto;
+      background: #1a1a1a;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.4);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      font-weight: bold;
+      color: #d9d9d9;
+    }
+
+    input, textarea {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    input:focus, textarea:focus {
+      outline: 2px solid #8B5E3C; /* brown highlight */
+    }
+
+    button {
+      background-color: #8B5E3C; /* brown button */
+      color: #fff;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #a67148;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      color: #d9d9d9;
+      font-size: 0.9rem;
+      border-top: 1px solid #333;
+    }
+  </style>
 </head>
-<style>
-.mentorpage{
-  place-items: center;
-
-}
-
-</style>
 <body>
 
   <header>
-    <div class="logo">SURROGATE FATHER</div>
-    <nav>
-       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-  <a href="offerings.html">Offerings</a>
-  <a href="book-shop.html">Shop</a>
-  <a href="mentorship.html">Mentorship</a>
-  <a href="resources.html">Resources</a>
-  <a href="events.html">Events</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
-  <a href="members.html">Members</a>
-    <a href="privacy.html">privacy policy</a>
-  
-    </nav>
-    <div id="hamburger">&#9776;</div>
+    <h1>Join Our Mentorship Program</h1>
+    <p>We believe in guiding the next generation. Sign up to connect, learn, and grow with us.</p>
   </header>
-   
-   
-    <div id="sidebar">
-        <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-  <a href="offerings.html">Offerings</a>
-  <a href="book-shop.html">Shop</a>
-  <a href="mentorship.html">Mentorship</a>
-  <a href="resources.html">Resources</a>
-  <a href="events.html">Events</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
-  <a href="members.html">Members</a>
-    <a href="privacy.html">Privacy policy</a>
-  
-  </div>
-  <div class="mentorpage">
-<picture>
-  <source media="(min-width: )" srcset="">
-  <img src="" alt="">
-</picture>
-  <main class="container">
-    <h1>Mentorship — Apply to the Cohort</h1>
-    <p>Small cohort, limited seats. Apply below.</p>
-    <form id="mentorshipForm" class="apply-form">
-      <input name="name" placeholder="Full name" required>
-      <input name="email" type="email" placeholder="Email" required>
-      <textarea name="why" rows="5" placeholder="Why do you need mentorship?" required></textarea>
-      <button type="submit" class="btn">Apply</button>
+
+  <div class="form-container">
+    <h2>Get Started</h2>
+    
+    <!-- Mailchimp Signup Form -->
+    <form action="YOUR_MAILCHIMP_FORM_ACTION_URL" method="post" target="_blank" novalidate>
+      <label for="name">Full Name</label>
+      <input type="text" name="FNAME" id="name" placeholder="Enter your name" required>
+
+      <label for="email">Email Address</label>
+      <input type="email" name="EMAIL" id="email" placeholder="Enter your email" required>
+
+      <label for="message">Your Message</label>
+      <textarea name="MESSAGE" id="message" rows="5" placeholder="Tell us what you hope to gain from mentorship" required></textarea>
+
+      <button type="submit">Join Mentorship</button>
     </form>
-  </main>
-  <footer class="site-footer"><div class="container">© <span id="year6"></span> [Your Name]</div></footer>
   </div>
+
+  <div class="footer">
+    © 2025 Mentorship Initiative. All rights reserved.
+  </div>
+
 </body>
-<script src="js\script.js"></script>
 </html>
+
