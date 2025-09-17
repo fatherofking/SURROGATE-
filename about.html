@@ -1,241 +1,651 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Me</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    /* Reset */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Luxury Brand</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0a0a0a;
-      color: #e0e0e0;
-      line-height: 1.6;
-    }
+        :root {
+            --deep-brown: #2D1810;
+            --medium-brown: #3D2317;
+            --light-brown: #8B6914;
+            --accent-brown: #B8860B;
+            --black: #0A0A0A;
+            --white: #FFFFFF;
+            --light-grey: #CCCCCC;
+            --dark-grey: #666666;
+        }
 
-    /* Hero Section */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      background: linear-gradient(to right, #000000, #001a33);
-      color: white;
-      padding: 20px;
-    }
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            background: var(--black);
+            overflow-x: hidden;
+        }
 
-    .hero h1 {
-      font-size: 4rem;
-      color: #c2d6dc;
-      text-shadow: 0 0 15px #6cbdd8;
-    }
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
 
-    .hero p {
-      font-size: 1.3rem;
-      margin-top: 15px;
-      max-width: 700px;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    .btn {
-      margin-top: 30px;
-      padding: 12px 25px;
-      font-size: 1rem;
-      color: white;
-      background: #00bfff;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      box-shadow: 0 0 15px #00bfff;
-      transition: 0.3s;
-    }
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    .btn:hover {
-      background: #0080ff;
-      box-shadow: 0 0 25px #0080ff;
-    }
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
 
-    /* About Section */
-    .about {
-      padding: 80px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+        .fade-in.visible {
+            animation-delay: 0.2s;
+        }
 
-    .about h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      color: #00bfff;
-      margin-bottom: 40px;
-      text-shadow: 0 0 10px #00bfff;
-    }
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--deep-brown) 0%, var(--black) 100%);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .about p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-      text-align: center;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent 0%, var(--light-brown) 100%);
+            opacity: 0.1;
+        }
 
-    /* Skills Section */
-    .skills {
-      background: #111;
-      padding: 80px 20px;
-    }
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+        }
 
-    .skills h2 {
-      text-align: center;
-      font-size: 2.5rem;
-      color: #00bfff;
-      margin-bottom: 40px;
-      text-shadow: 0 0 10px #00bfff;
-    }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
 
-    .skill-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--light-grey);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
 
-    .skill-item {
-      background: #1a1a1a;
-      padding: 20px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 0 15px rgba(0, 191, 255, 0.3);
-      transition: transform 0.3s;
-    }
+        .accent-line {
+            width: 100px;
+            height: 4px;
+            background: var(--accent-brown);
+            margin: 2rem 0;
+        }
 
-    .skill-item:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 0 25px rgba(0, 191, 255, 0.6);
-    }
+        /* Section Styling */
+        .section {
+            padding: 6rem 0;
+        }
 
-    /* Contact Section */
-    .contact {
-      padding: 80px 20px;
-      text-align: center;
-    }
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--white);
+        }
 
-    .contact h2 {
-      font-size: 2.5rem;
-      color: #00bfff;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #00bfff;
-    }
+        /* Mission & Vision */
+        .mission-vision {
+            background: var(--medium-brown);
+        }
 
-    .contact p {
-      font-size: 1.2rem;
-      margin-bottom: 20px;
-    }
+        .mission-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
 
-    .contact a {
-      display: inline-block;
-      padding: 12px 25px;
-      font-size: 1rem;
-      color: white;
-      background: #00bfff;
-      border-radius: 30px;
-      text-decoration: none;
-      box-shadow: 0 0 15px #00bfff;
-      transition: 0.3s;
-    }
+        .mission-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-brown);
+        }
 
-    .contact a:hover {
-      background: #0080ff;
-      box-shadow: 0 0 25px #0080ff;
-    }
+        .mission-text p {
+            font-size: 1.1rem;
+            color: var(--light-grey);
+            margin-bottom: 2rem;
+        }
 
-    /* Footer */
-    .footer {
-      background: #000;
-      padding: 20px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-  </style>
+        .mission-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            background: var(--deep-brown);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .mission-icon svg {
+            width: 150px;
+            height: 150px;
+            fill: var(--accent-brown);
+        }
+
+        /* Our Story */
+        .story {
+            background: var(--deep-brown);
+        }
+
+        .story-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .story-card {
+            background: var(--medium-brown);
+            padding: 2.5rem;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--accent-brown);
+        }
+
+        .story-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .story-year {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-brown);
+            margin-bottom: 1rem;
+        }
+
+        .story-card h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .story-card p {
+            color: var(--light-grey);
+        }
+
+        /* What Makes Us Unique */
+        .unique {
+            background: var(--black);
+        }
+
+        .unique-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .unique-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .unique-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--deep-brown);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .unique-icon:hover {
+            background: var(--accent-brown);
+        }
+
+        .unique-icon svg {
+            width: 40px;
+            height: 40px;
+            fill: var(--white);
+        }
+
+        .unique-item h4 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .unique-item p {
+            color: var(--light-grey);
+        }
+
+        /* Team Section */
+        .team {
+            background: var(--medium-brown);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .team-member {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+        }
+
+        .team-photo {
+            width: 100%;
+            height: 300px;
+            background: var(--deep-brown);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-photo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--accent-brown);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .team-member:hover .team-photo::before {
+            opacity: 0.7;
+        }
+
+        .team-info {
+            padding: 1.5rem;
+            background: var(--deep-brown);
+        }
+
+        .team-name {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--white);
+        }
+
+        .team-title {
+            color: var(--accent-brown);
+            font-size: 0.9rem;
+        }
+
+        /* Achievements */
+        .achievements {
+            background: var(--deep-brown);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--accent-brown);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: var(--black);
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            color: var(--light-grey);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-brown);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background: var(--light-brown);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mission-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .story-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .unique-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero {
+                text-align: center;
+                padding: 2rem 0;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
- <header>
-    <div class="logo">SURROGATE FATHER</div>
-    <nav>
-      <a href="index.html">Home</a>
-       <a href="about.html">About</a>
-  <a href="offerings.html">Offerings</a>
-  <a href="book-shop.html">Shop</a>
-  <a href="mentorship.html">Mentorship</a>
-  <a href="resources.html">Resources</a>
-  <a href="events.html">Events</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
-  <a href="members.html">Members</a>
-    <a href="privacy.html">privacy policy</a>
-  
-    </nav>
-    <div id="hamburger">&#9776;</div>
-  </header>
-   
-   
-    <div id="sidebar">
-      <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-  <a href="offerings.html">Offerings</a>
-  <a href="book-shop.html">Shop</a>
-  <a href="mentorship.html">Mentorship</a>
-  <a href="resources.html">Resources</a>
-  <a href="events.html">Events</a>
-  <a href="blog.html">Blog</a>
-  <a href="contact.html">Contact</a>
-  <a href="members.html">Members</a>
-    <a href="privacy.html">Provicy policy</a>
-  
-  </div>
-  <!-- Hero -->
-  <section class="hero">
-    <h1>SURROGATE FATHER</h1>
-    <p>A DEDICATED ADVISER TO YOUTH WILLING TO CHANGE</p>
-    <a href="index.html"><button class="btn">Discover More</button></a>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Luxury Redefined</h1>
+                <p class="hero-subtitle">Crafting exceptional experiences through innovation, elegance, and uncompromising quality</p>
+                <div class="accent-line"></div>
+            </div>
+        </div>
+    </section>
 
-  <!-- About -->
-  <section class="about">
-    <h2>About Me</h2>
-    <p>Hello! I'm a passionate speaker who loves helping men around the world attain some level of financial freedom . My mission is to build men that combine hardwork with responsibility. Every person i inspire is an opportunity for me to impact the world .</p>
-  </section>
+    <!-- Mission & Vision -->
+    <section class="section mission-vision">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Purpose</h2>
+            <div class="mission-content">
+                <div class="mission-text fade-in">
+                    <h3>Our Mission</h3>
+                    <p>To revolutionize the luxury industry by creating timeless experiences that blend traditional craftsmanship with modern innovation, setting new standards of excellence in every interaction.</p>
+                    
+                    <h3>Our Vision</h3>
+                    <p>To become the world's most trusted luxury brand, recognized for our commitment to sustainability, innovation, and the relentless pursuit of perfection in everything we create.</p>
+                </div>
+                <div class="mission-icon fade-in">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Skills -->
-  <section class="skills">
-    <h2>My Skills</h2>
-    <div class="skill-list">
-      <div class="skill-item"> Career coaching</div>
-      <div class="skill-item"> Affiliate marketting</div>
-      <div class="skill-item"> Writing</div>
-      <div class="skill-item">   relationship advising</div>
-    </div>
-  </section>
+    <!-- Our Story -->
+    <section class="section story">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Journey</h2>
+            <div class="story-timeline">
+                <div class="story-card fade-in">
+                    <div class="story-year">2010</div>
+                    <h4>The Beginning</h4>
+                    <p>Founded with a vision to create exceptional luxury experiences, we started as a small team with big dreams and an unwavering commitment to quality.</p>
+                </div>
+                <div class="story-card fade-in">
+                    <div class="story-year">2015</div>
+                    <h4>Innovation Era</h4>
+                    <p>Introduced groundbreaking technologies that revolutionized the industry while maintaining our commitment to traditional craftsmanship.</p>
+                </div>
+                <div class="story-card fade-in">
+                    <div class="story-year">2020</div>
+                    <h4>Global Expansion</h4>
+                    <p>Expanded our presence worldwide, bringing our luxury experiences to discerning customers across multiple continents.</p>
+                </div>
+                <div class="story-card fade-in">
+                    <div class="story-year">2025</div>
+                    <h4>Future Forward</h4>
+                    <p>Leading the industry with sustainable practices and cutting-edge innovation, setting the standard for luxury brands worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Contact -->
-  <section class="contact">
-    <h2> Connect</h2>
-    <p>I’m always open to collaborations and new opportunities. Reach out and let’s build something great together.</p>
-    <a href="mailto:your@email.com">Contact Me</a>
-  </section>
+    <!-- What Makes Us Unique -->
+    <section class="section unique">
+        <div class="container">
+            <h2 class="section-title fade-in">What Sets Us Apart</h2>
+            <div class="unique-grid">
+                <div class="unique-item fade-in">
+                    <div class="unique-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                    </div>
+                    <h4>Uncompromising Quality</h4>
+                    <p>Every product undergoes rigorous quality checks to ensure it meets our exceptional standards of excellence and durability.</p>
+                </div>
+                <div class="unique-item fade-in">
+                    <div class="unique-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 2l1.09 3.26L16 5l-2.91 3.26L12 12l-1.09-3.74L8 5l3.09.26L12 2z M20 12l.94 2.06L23 14l-2.06.94L20 17l-.94-2.06L17 14l2.06-.94L20 12z"/>
+                        </svg>
+                    </div>
+                    <h4>Innovative Design</h4>
+                    <p>Our design team combines artistic vision with functional excellence to create products that are both beautiful and practical.</p>
+                </div>
+                <div class="unique-item fade-in">
+                    <div class="unique-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+                        </svg>
+                    </div>
+                    <h4>Personalized Service</h4>
+                    <p>Each client receives personalized attention from our dedicated team, ensuring their unique needs are met with precision.</p>
+                </div>
+                <div class="unique-item fade-in">
+                    <div class="unique-icon">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75S7 8 17 8z"/>
+                        </svg>
+                    </div>
+                    <h4>Sustainable Practices</h4>
+                    <p>Committed to environmental responsibility, we implement sustainable practices across all aspects of our business operations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <div class="footer">
-    © SURROGATE FATHER
-  </div>
+    <!-- Team Section -->
+    <section class="section team">
+        <div class="container">
+            <h2 class="section-title fade-in">Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h4 class="team-name">Sarah Mitchell</h4>
+                        <p class="team-title">Chief Executive Officer</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h4 class="team-name">James Rodriguez</h4>
+                        <p class="team-title">Creative Director</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h4 class="team-name">Emily Chen</h4>
+                        <p class="team-title">Head of Innovation</p>
+                    </div>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="team-photo"></div>
+                    <div class="team-info">
+                        <h4 class="team-name">Michael Thompson</h4>
+                        <p class="team-title">Operations Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Achievements -->
+    <section class="section achievements">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Achievements</h2>
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">50K+</div>
+                    <div class="stat-label">Happy Customers</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Years Experience</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Awards Won</div>
+                </div>
+                <div class="stat-item fade-in">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Team Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta">
+        <div class="container">
+            <div class="fade-in">
+                <h2>Ready to Experience Excellence?</h2>
+                <p>Join thousands of satisfied customers who have chosen luxury, quality, and innovation. Let us create something extraordinary for you.</p>
+                <a href="#contact" class="cta-button">Get Started Today</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth fade-in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
 </body>
-<script src="script.js"></script>
 </html>
