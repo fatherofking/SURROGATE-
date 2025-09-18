@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mentorship Page</title>
+  <link href="style.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -12,19 +13,19 @@
       color: #ffffff;
     }
 
-    header {
+    .header {
       text-align: center;
       padding: 3rem 1rem;
       background: linear-gradient(135deg, #3e2c23, #0d0d0d); /* brown to black gradient */
     }
 
-    header h1 {
+    .header h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
       color: #fff;
     }
 
-    header p {
+    .header p {
       font-size: 1.2rem;
       color: #d9d9d9;
     }
@@ -91,11 +92,45 @@
   </style>
 </head>
 <body>
-
-  <header>
+<header>
+        
+    <div class="logo">SURROGATE FATHER</div>
+    <nav>
+      <a href="index.html">Home</a>
+       <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">privacy policy</a>
+  
+    </nav>
+    <div id="hamburger">&#9776;</div>
+  </header>
+   
+   
+    <div id="sidebar">
+      <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+  <a href="offerings.html">Offerings</a>
+  <a href="book-shop.html">Shop</a>
+  <a href="mentorship.html">Mentorship</a>
+  <a href="resources.html">Resources</a>
+  <a href="events.html">Events</a>
+  <a href="blog.html">Blog</a>
+  <a href="contact.html">Contact</a>
+  <a href="members.html">Members</a>
+    <a href="privacy.html">Provicy policy</a>
+  
+  </div>
+  <div class='header'>
     <h1>Join Our Mentorship Program</h1>
     <p>We believe in guiding the next generation. Sign up to connect, learn, and grow with us.</p>
-  </header>
+  </div>
 
   <div class="form-container">
     <h2>Get Started</h2>
@@ -120,5 +155,6 @@
   </div>
 
 </body>
+  <script src="script.js"></script>
 </html>
 
