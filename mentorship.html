@@ -1,150 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mentorship</title>
-  <link href="style.css" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background-color: #0d0d0d; /* black background */
-      color: #ffffff;
-    }
-
-    .header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(135deg, #3e2c23, #0d0d0d); /* brown to black gradient */
-    }
-
-    .header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      color: #fff;
-    }
-
-    .header p {
-      font-size: 1.2rem;
-      color: #d9d9d9;
-    }
-
-    .form-container {
-      max-width: 600px;
-      margin: 3rem auto;
-      background: #1a1a1a;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.4);
-    }
-
-    .form-container h2 {
-      text-align: center;
-      color: #fff;
-      margin-bottom: 1rem;
-    }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    label {
-      font-weight: bold;
-      color: #d9d9d9;
-    }
-
-    input, textarea {
-      padding: 0.8rem;
-      border: none;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-
-    input:focus, textarea:focus {
-      outline: 2px solid #8B5E3C; /* brown highlight */
-    }
-
-    button {
-      background-color: #8B5E3C; /* brown button */
-      color: #fff;
-      border: none;
-      padding: 1rem;
-      border-radius: 8px;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background-color: #a67148;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 2rem 1rem;
-      color: #d9d9d9;
-      font-size: 0.9rem;
-      border-top: 1px solid #333;
-    }
-    .head{
-      display:flex;
-      
-    }
-    .home{
-      background-color:gold;
-      color:white;
-      padding:20px;
-      border-radius:7px;
-      display:flex;
-      justify-self:center;
-      align-self:center;
-      border:1px solid:
-    }
-     .home a{
-      text-decoration:none;
-       font-size:1.2rem;
-       color:white;
-       
-       
-     }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surrogate father1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --dark-gold: #B8860B;
+            --light-gold: #F5E8C8;
+            --black: #1A1A1A;
+            --dark-gray: #2D2D2D;
+            --light-gray: #F5F5F5;
+            --white: #FFFFFF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            padding: 1.5rem 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            border-bottom: 2px solid var(--gold);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span:first-child {
+            color: var(--gold);
+        }
+        
+        .logo span:last-child {
+            color: var(--white);
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--gold);
+        }
+        
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--light-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: var(--light-gray);
+        }
+        
+        /* Form Styles */
+        .form-section {
+            padding: 2rem 0;
+        }
+        
+        .form-card {
+            background: linear-gradient(145deg, #2a2a2a, #1f1f1f);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 2px solid var(--gold);
+            position: relative;
+        }
+        
+        .premium-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--black);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            z-index: 2;
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            padding: 2.5rem;
+            text-align: center;
+            color: var(--black);
+        }
+        
+        .form-header h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .form-body {
+            padding: 3rem;
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--light-gray);
+            font-size: 1.1rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 16px 18px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 10px;
+            background-color: rgba(45,45,45,0.7);
+            font-size: 1rem;
+            transition: all 0.3s;
+            color: var(--white);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--gold);
+            background-color: rgba(45,45,45,0.9);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 140px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--black);
+            border: none;
+            padding: 18px 30px;
+            border-radius: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 2rem;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .submit-btn .loading {
+            display: none;
+            width: 22px;
+            height: 22px;
+            border: 2px solid transparent;
+            border-top: 2px solid var(--black);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 12px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .form-message {
+            margin-top: 1.5rem;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+            font-size: 1.1rem;
+        }
+        
+        .form-message.success {
+            background-color: rgba(212, 175, 55, 0.1);
+            color: var(--gold);
+            border: 1px solid var(--gold);
+        }
+        
+        .form-message.error {
+            background-color: rgba(255, 0, 0, 0.1);
+            color: #ff6b6b;
+            border: 1px solid #ff6b6b;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--black);
+            color: var(--white);
+            padding: 2rem 0 1rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #444;
+            color: #999;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .form-body {
+                padding: 2rem;
+            }
+            
+            .form-header {
+                padding: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-crown"></i>
+                <span>Surrogate</span><span>Father1</span>
+            </div>
+        </div>
+    </header>
 
-  <div class='header'>
-  
-    <h1>Join Surrogate father 1 Mentorship Program</h1>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Premium Mentorship Program</h1>
+            <p>Transform your career, health, and personal brand with our exclusive coaching program</p>
+        </div>
+    </section>
 
-    
-    <p>We believe in guiding the next generation. Sign up to connect, learn, and grow with us.</p>
-  </div>
+    <!-- Form Section -->
+    <section class="form-section">
+        <div class="container">
+            <div class="form-card">
+                <div class="premium-badge">ELITE PROGRAM</div>
+                <div class="form-header">
+                    <h2>Application Form</h2>
+                    <p>Complete this form to begin your transformation journey</p>
+                </div>
+                <div class="form-body">
+                    <form id="premiumForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="currentRole">Current Role & Industry *</label>
+                                <input type="text" id="currentRole" name="currentRole" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="careerGoals">Career Goals & Aspirations *</label>
+                            <textarea id="careerGoals" name="careerGoals" class="form-control" required placeholder="Describe your career goals, desired position, timeline, and what success looks like for you..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="healthFocus">Health & Wellness Focus Areas *</label>
+                            <select id="healthFocus" name="healthFocus" class="form-control" required>
+                                <option value="">Select your primary health focus areas</option>
+                                <option value="stress-management">Stress Management & Mental Clarity</option>
+                                <option value="energy-optimization">Energy Optimization & Vitality</option>
+                                <option value="nutrition-planning">Nutrition & Meal Planning</option>
+                                <option value="fitness-routine">Fitness & Exercise Routine</option>
+                                <option value="sleep-optimization">Sleep Optimization</option>
+                                <option value="work-life-balance">Work-Life Balance</option>
+                                <option value="multiple">Multiple Areas</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="brandObjectives">Personal Brand Objectives *</label>
+                            <textarea id="brandObjectives" name="brandObjectives" class="form-control" required placeholder="What do you want to be known for? What's your unique value proposition? How do you want to position yourself in your industry?"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="challenges">Current Challenges *</label>
+                            <textarea id="challenges" name="challenges" class="form-control" required placeholder="What are the biggest challenges you're facing in your career, health, or personal brand development?"></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="investment">Investment Readiness *</label>
+                                <select id="investment" name="investment" class="form-control" required>
+                                    <option value="">Select your readiness level</option>
+                                    <option value="ready-to-invest">Ready to invest in my transformation</option>
+                                    <option value="considering-investment">Considering investment, need more details</option>
+                                    <option value="budget-planning">Budget planning phase</option>
+                                    <option value="exploring-options">Exploring options</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="timeline">Desired Start Timeline *</label>
+                                <select id="timeline" name="timeline" class="form-control" required>
+                                    <option value="">Select your preferred timeline</option>
+                                    <option value="immediate">Immediately (within 2 weeks)</option>
+                                    <option value="1-month">Within 1 month</option>
+                                    <option value="1-3-months">1-3 months</option>
+                                    <option value="3-6-months">3-6 months</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="expectations">Program Expectations *</label>
+                            <textarea id="expectations" name="expectations" class="form-control" required placeholder="What specific outcomes are you hoping to achieve through this mentorship program?"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">
+                            <span class="loading"></span>
+                            Submit Elite Application
+                        </button>
+                        
+                        <div id="premiumFormMessage" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <div class="form-container">
-    <h2>Get Started</h2>
-    
-    <!-- Mailchimp Signup Form -->
-    <form action="https://mailchi.mp/c8fb3185f376/welcome-to-the-family-surrogatefather1" method="post" target="_blank" novalidate>
-      <label for="name">Full Name</label>
-      <input type="text" name="FNAME" id="name" placeholder="Enter your name" required>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="copyright">
+                <p>&copy; 2023 ElitePath Coaching. All rights reserved. | Premium Career, Health & Brand Strategy Mentorship</p>
+            </div>
+        </div>
+    </footer>
 
-      <label for="email">Email Address</label>
-      <input type="email" name="EMAIL" id="email" placeholder="Enter your email" required>
-
-      <label for="message">Your Message</label>
-      <textarea name="MESSAGE" id="message" rows="5" placeholder="Tell us what you hope to gain from mentorship" required></textarea>
-
-      <button type="submit">Join Mentorship</button>
-    </form>
-  </div>
- <div class="home"> <a href="index.html"> Home </a>  </div>
-  <div class="footer">
-    © 2025 surrogate father1. All rights reserved.
-  </div>
-
+    <script>
+        // Form submission handling for Premium Form
+        document.getElementById('premiumForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('.submit-btn');
+            const loading = submitBtn.querySelector('.loading');
+            const formMessage = document.getElementById('premiumFormMessage');
+            
+            // Show loading state
+            submitBtn.disabled = true;
+            loading.style.display = 'block';
+            formMessage.style.display = 'none';
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            for (const [key, value] of formData) {
+                data[key] = value;
+            }
+            
+            // Add form type to data
+            data.formType = 'premium';
+            data.timestamp = new Date().toISOString();
+            
+            // Replace with your actual Google Apps Script URL
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwiVPEsK-IHNyG2MSkXwfilI832xT2Q3hSdJZU7wcmd8VBDNa9kDxKXO1ZC6sut1a_C2A/exec';
+            
+            // Send data to Google Sheets
+            fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Hide loading state
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+                
+                if (data.result === 'success') {
+                    // Show success message
+                    formMessage.textContent = 'Thank you for your elite mentorship application! We will review your information carefully and contact you within 24 hours to discuss next steps.';
+                    formMessage.className = 'form-message success';
+                    formMessage.style.display = 'block';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Scroll to message
+                    formMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    throw new Error(data.message);
+                }
+            })
+            .catch(error => {
+                // Hide loading state
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+                
+                // Show error message
+                formMessage.textContent = 'There was an error submitting your application. Please try again or email us directly at applications@elitepath.com';
+                formMessage.className = 'form-message error';
+                formMessage.style.display = 'block';
+                
+                console.error('Error:', error);
+            });
+        });
+    </script>
 </body>
-  <script src="script.js"></script>
 </html>
 
