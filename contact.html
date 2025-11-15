@@ -457,6 +457,126 @@
                 font-size: 1rem;
             }
         }
+          :root {
+            --gold: #b8860b;
+            --dark-gold: #8b6914;
+            --black: #121212;
+            --light-bg: #1a1a1a;
+            --white: #f5f5f5;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--black);
+            color: var(--white);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .form-container {
+            background-color: var(--light-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 500px;
+            border: 1px solid var(--dark-gold);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .form-header h2 {
+            color: var(--gold);
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: #aaa;
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: var(--white);
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            color: var(--black);
+            border: none;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(135deg, var(--dark-gold), var(--gold));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+            font-size: 14px;
+        }
+        
+        .success-message {
+            background-color: rgba(46, 125, 50, 0.2);
+            border: 1px solid #2e7d32;
+            color: #4caf50;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -506,43 +626,50 @@
     </section>
 
     <!-- Contact Form Section -->
-    <section class="contact-form-section" id="contact-form">
-        <div class="container">
-            <h2 class="section-title slide-up">Send Us a Message</h2>
-            <div class="form-container slide-up">
-                <!-- Replace YOUR_MAILCHIMP_ACTION_URL with your actual Mailchimp form action URL -->
-                <form class="contact-form" action=" https://mailchi.mp/c8fb3185f376/welcome-to-the-family-surrogatefather1" method="POST">
-                    <div class="form-group">
-                        <label for="full-name" class="form-label">Full Name</label>
-                        <input type="text" id="full-name" name="FNAME" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="email" class="form-label">Email Address</label>
-                        <input type="email" id="email" name="EMAIL" class="form-input" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="subject" class="form-label">Subject</label>
-                        <select id="subject" name="SUBJECT" class="form-select" required>
-                            <option value="">Please select a subject</option>
-                            <option value="general">General Inquiry</option>
-                            <option value="mentorship">Mentorship</option>
-                            <option value="partnership">Partnership</option>
-                            <option value="support">Support</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea id="message" name="MESSAGE" class="form-textarea" placeholder="Tell us about your project, goals, or how we can help you..." required></textarea>
-                    </div>
-                    
-                    <button type="submit" class="form-button">Send Message</button>
-                </form>
-            </div>
+    <div class="form-container">
+        <div class="form-header">
+            <h2>Contact Us</h2>
+            <p>We'll get back to you as soon as possible</p>
         </div>
-    </section>
+        
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+            </div>
+            
+            <div class="form-group">
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+        
+        <div id="successMessage" class="success-message">
+            Thank you for your message! We'll be in touch soon.
+        </div>
+        
+        <div class="form-footer">
+            <p>Your information is secure and will not be shared</p>
+        </div>
+    </div>
+
 
     <!-- Location & Contact Info -->
     <section class="section location-section">
@@ -729,10 +856,33 @@
                 this.parentElement.style.transform = 'translateY(0)';
             });
         });
+          document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // In a real implementation, you would send this data to Google Sheets
+            // using Google Apps Script or another backend service
+            console.log('Form data:', data);
+            
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 5000);
+        });
     </script>
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
