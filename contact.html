@@ -457,7 +457,7 @@
                 font-size: 1rem;
             }
         }
-          :root {
+                  :root {
             --gold: #b8860b;
             --dark-gold: #8b6914;
             --black: #121212;
@@ -560,6 +560,12 @@
             box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
         }
         
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
         .form-footer {
             text-align: center;
             margin-top: 20px;
@@ -577,6 +583,18 @@
             text-align: center;
             display: none;
         }
+        
+        .error-message {
+            background-color: rgba(211, 47, 47, 0.2);
+            border: 1px solid #d32f2f;
+            color: #f44336;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+        }
+
     </style>
 </head>
 <body>
@@ -626,6 +644,7 @@
     </section>
 
     <!-- Contact Form Section -->
+   
     <div class="form-container">
         <div class="form-header">
             <h2>Contact Us</h2>
@@ -658,11 +677,15 @@
                 <textarea id="message" name="message" required></textarea>
             </div>
             
-            <button type="submit" class="submit-btn">Send Message</button>
+            <button type="submit" class="submit-btn" id="submitBtn">Send Message</button>
         </form>
         
         <div id="successMessage" class="success-message">
             Thank you for your message! We'll be in touch soon.
+        </div>
+        
+        <div id="errorMessage" class="error-message">
+            There was an error submitting your form. Please try again.
         </div>
         
         <div class="form-footer">
@@ -856,32 +879,65 @@
                 this.parentElement.style.transform = 'translateY(0)';
             });
         });
-          document.getElementById('contactForm').addEventListener('submit', function(e) {
+           // Replace this with your Google Apps Script URL after deployment
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzrySyh3wIlvuM9jbo_qFQ1TXmlUliaISkqI-Ez7U7KHhUWe91cUl1FCPGfn3FhgiR_/exec';
+        
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            const submitBtn = document.getElementById('submitBtn');
+            const originalText = submitBtn.textContent;
             
-            // In a real implementation, you would send this data to Google Sheets
-            // using Google Apps Script or another backend service
-            console.log('Form data:', data);
+            // Disable button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
             
-            // Show success message
-            document.getElementById('successMessage').style.display = 'block';
+            // Hide previous messages
+            document.getElementById('successMessage').style.display = 'none';
+            document.getElementById('errorMessage').style.display = 'none';
             
-            // Reset form
-            this.reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').style.display = 'none';
-            }, 5000);
+            try {
+                // Get form data
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                // Add form type for Google Apps Script
+                data.formType = 'contact';
+                
+                // Send to Google Sheets
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === 'success') {
+                    // Show success message
+                    document.getElementById('successMessage').style.display = 'block';
+                    // Reset form
+                    this.reset();
+                } else {
+                    throw new Error(result.message);
+                }
+                
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('errorMessage').style.display = 'block';
+            } finally {
+                // Re-enable button
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
         });
     </script>
     <script src="script.js"></script>
 </body>
 </html>
+
 
 
 
