@@ -1,300 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentorship Application</title>
-    <style>
-        :root {
-            --gold: #b8860b;
-            --dark-gold: #8b6914;
-            --black: #121212;
-            --light-bg: #1a1a1a;
-            --white: #f5f5f5;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mentorship Application Form</title>
+
+<style>
+    body{
+        margin:0;
+        font-family: Arial, sans-serif;
+        background:#000;
+        color:#fff;
+        display:flex;
+        justify-content:center;
+        padding:50px 0;
+    }
+
+    .form-box{
+        background:#111;
+        width:500px;
+        padding:30px;
+        border-radius:15px;
+        border:2px solid #b8860b;
+        box-shadow:0 0 20px rgba(184,134,11,0.5);
+    }
+
+    h2{
+        text-align:center;
+        color:#b8860b;
+        margin-bottom:20px;
+        font-size:26px;
+        font-weight:bold;
+    }
+
+    label{
+        color:#b8860b;
+        font-weight:bold;
+        margin-top:10px;
+        display:block;
+    }
+
+    input, select, textarea{
+        width:100%;
+        padding:12px;
+        margin:8px 0 20px 0;
+        border:1px solid #b8860b;
+        border-radius:7px;
+        background:#000;
+        color:#fff;
+    }
+
+    button{
+        width:100%;
+        padding:14px;
+        background:#b8860b;
+        color:#000;
+        font-size:18px;
+        font-weight:bold;
+        border:none;
+        border-radius:7px;
+        cursor:pointer;
+        transition:0.3s;
+    }
+
+    button:hover{
+        background:#d4a441;
+    }
+
+    .response{
+        text-align:center;
+        margin-top:15px;
+        color:#b8860b;
+        font-weight:bold;
+    }
+     .button{
+        margin-left: 40px;
+        border: 1px solid blue;
+        background-color: blue;
+        color: aliceblue;
+        width: 200px;
+        display: flex;
+        justify-content: center;
+        border-radius: 30px;
+        transition: all 1s ease-in-out;
+    }
+    .button:hover{
+    background-color: black;
+        color: aliceblue;
         
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--black);
-            color: var(--white);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .form-container {
-            background-color: var(--light-bg);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            width: 100%;
-            max-width: 600px;
-            border: 1px solid var(--dark-gold);
-        }
-        
-        .form-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .form-header h2 {
-            color: var(--gold);
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: var(--gold);
-            font-weight: 500;
-        }
-        
-        input, textarea, select {
-            width: 100%;
-            padding: 12px 15px;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid #333;
-            border-radius: 5px;
-            color: var(--white);
-            font-size: 16px;
-        }
-        
-        input:focus, textarea:focus, select:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-        
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-        
-        .submit-btn {
-            background: var(--gold);
-            color: var(--black);
-            border: none;
-            padding: 14px 20px;
-            font-size: 16px;
-            font-weight: 600;
-            border-radius: 5px;
-            cursor: pointer;
-            width: 100%;
-        }
-        
-        .submit-btn:hover {
-            background: var(--dark-gold);
-        }
-        
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-        
-        .success-message {
-            background-color: rgba(46, 125, 50, 0.2);
-            border: 1px solid #2e7d32;
-            color: #4caf50;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            text-align: center;
-            display: none;
-        }
-        
-        .error-message {
-            background-color: rgba(211, 47, 47, 0.2);
-            border: 1px solid #d32f2f;
-            color: #f44336;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            text-align: center;
-            display: none;
-        }
-        
-        .coaching-options {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .coaching-option {
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid #333;
-            border-radius: 5px;
-            padding: 15px;
-            cursor: pointer;
-        }
-        
-        .coaching-option.selected {
-            border-color: var(--gold);
-            background-color: rgba(184, 134, 11, 0.1);
-        }
-        
-        .coaching-option input {
-            display: none;
-        }
-    </style>
+    }
+</style>
 </head>
 <body>
-    <div class="form-container">
-        <div class="form-header">
-            <h2>Mentorship Application</h2>
-            <p>Take the next step in your personal and professional development</p>
-        </div>
-        
-        <form id="mentorshipForm">
-            <div class="form-group">
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" name="fullName" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" name="phone" required>
-            </div>
-            
-            <div class="form-group">
-                <label>Area of Interest</label>
-                <div class="coaching-options">
-                    <div class="coaching-option" onclick="selectOption(this, 'career')">
-                        <input type="radio" id="career" name="interest" value="Career Coaching" required>
-                        <label for="career">Career Coaching</label>
-                    </div>
-                    <div class="coaching-option" onclick="selectOption(this, 'health')">
-                        <input type="radio" id="health" name="interest" value="Health Coaching" required>
-                        <label for="health">Health Coaching</label>
-                    </div>
-                    <div class="coaching-option" onclick="selectOption(this, 'men')">
-                        <input type="radio" id="men" name="interest" value="Men Mentoring" required>
-                        <label for="men">Men Mentoring</label>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="form-group">
-                <label for="experience">Current Professional Level</label>
-                <select id="experience" name="experience" required>
-                    <option value="" disabled selected>Select your level</option>
-                    <option value="Student">Student</option>
-                    <option value="Entry Level">Entry Level Professional</option>
-                    <option value="Mid Level">Mid-Level Professional</option>
-                    <option value="Senior Level">Senior-Level Professional</option>
-                    <option value="Executive">Executive</option>
-                    <option value="Career Changer">Career Changer</option>
-                </select>
-            </div>
-            
-            <div class="form-group">
-                <label for="goals">What are your primary goals for mentorship?</label>
-                <textarea id="goals" name="goals" required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="preferredTime">Preferred Session Time</label>
-                <select id="preferredTime" name="preferredTime" required>
-                    <option value="" disabled selected>Select preferred time</option>
-                    <option value="Weekday Mornings">Weekday Mornings</option>
-                    <option value="Weekday Afternoons">Weekday Afternoons</option>
-                    <option value="Weekday Evenings">Weekday Evenings</option>
-                    <option value="Weekends">Weekends</option>
-                </select>
-            </div>
-            
-            <button type="submit" class="submit-btn" id="submitBtn">Apply for Mentorship</button>
-        </form>
-        
-        <div id="successMessage" class="success-message">
-            Thank you for your application! We'll review it and contact you within 2 business days.
-        </div>
-        
-        <div id="errorMessage" class="error-message">
-            There was an error submitting your application. Please try again.
-        </div>
-    </div>
 
-    <script>
-        // REPLACE THIS WITH YOUR ACTUAL SCRIPT URL
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYs-Hdhx2f3zakY_nPTYI-G49Q5GblJulbW3v43ilnbEAabcPsYBcyF2PiG4itu8FRdg/exec';
-        
-        function selectOption(element, optionId) {
-            document.querySelectorAll('.coaching-option').forEach(opt => {
-                opt.classList.remove('selected');
-            });
-            element.classList.add('selected');
-            document.getElementById(optionId).checked = true;
-        }
-        
-        document.getElementById('mentorshipForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Submitting...';
-            
-            document.getElementById('successMessage').style.display = 'none';
-            document.getElementById('errorMessage').style.display = 'none';
-            
-            try {
-                const formData = new FormData(this);
-                const data = {
-                    formType: 'mentorship',
-                    fullName: formData.get('fullName'),
-                    email: formData.get('email'),
-                    phone: formData.get('phone'),
-                    interest: formData.get('interest'),
-                    experience: formData.get('experience'),
-                    goals: formData.get('goals'),
-                    preferredTime: formData.get('preferredTime')
-                };
-                
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-                
-                const result = await response.json();
-                
-                if (result.status === 'success') {
-                    document.getElementById('successMessage').style.display = 'block';
-                    this.reset();
-                    document.querySelectorAll('.coaching-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                } else {
-                    throw new Error(result.message);
-                }
-                
-            } catch (error) {
-                document.getElementById('errorMessage').style.display = 'block';
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Apply for Mentorship';
-            }
+<div class="form-box">
+    <h2>Mentorship Application</h2>
+
+    <form id="mentorForm">
+        <label>Full Name</label>
+        <input type="text" name="Full Name" required>
+
+        <label>Email</label>
+        <input type="email" name="Email" required>
+
+        <label>Phone Number</label>
+        <input type="text" name="Phone Number" required>
+
+        <label>Type of Mentorship</label>
+        <select name="Mentorship Type" required>
+            <option value="">-- Select Option --</option>
+            <option value="Career Coaching">Career Coaching</option>
+            <option value="Health Coaching">Health Coaching</option>
+            <option value="Men Mentoring">Men Mentoring</option>
+        </select>
+
+        <label>Why do you want this mentorship?</label>
+        <textarea name="Reason" rows="4" required></textarea>
+
+        <label>Your Current Challenge</label>
+        <textarea name="Challenge" rows="4"></textarea>
+
+        <button type="submit">Submit</button>
+
+        <div class="response" id="mentorMsg"></div>
+    </form>
+</div>
+     </div>
+   <div class="button">
+    <p> Back to home </p>
+   </div>
+
+<script>
+    const scriptURL_Mentor = "https://script.google.com/macros/s/AKfycbzopvpuBTBywAlKP72AxCZpuiOq-7r0IY9hZcgi4xAOTu4f8Mv2ykTPSpCf7mhOR94q8w/exec";
+    const mentorForm = document.getElementById("mentorForm");
+    const mentorMsg = document.getElementById("mentorMsg");
+
+    mentorForm.addEventListener("submit", e => {
+        e.preventDefault();
+        mentorMsg.innerHTML = "Submitting...";
+
+        fetch(scriptURL_Mentor, { 
+            method: "POST", 
+            body: new FormData(mentorForm)
+        })
+        .then(() => {
+            mentorMsg.innerHTML = "Submitted Successfully!";
+            mentorForm.reset();
+        })
+        .catch(() => {
+            mentorMsg.innerHTML = "Error! Try again.";
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
+
 
