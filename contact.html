@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Contact Form</title>
+    <title>Contact Form</title>
     <style>
         :root {
             --gold: #b8860b;
@@ -51,11 +51,6 @@
             margin-bottom: 10px;
         }
         
-        .form-header p {
-            color: #aaa;
-            font-size: 16px;
-        }
-        
         .form-group {
             margin-bottom: 20px;
         }
@@ -67,7 +62,7 @@
             font-weight: 500;
         }
         
-        input, textarea, select {
+        input, textarea {
             width: 100%;
             padding: 12px 15px;
             background-color: rgba(255, 255, 255, 0.05);
@@ -75,13 +70,11 @@
             border-radius: 5px;
             color: var(--white);
             font-size: 16px;
-            transition: all 0.3s ease;
         }
         
-        input:focus, textarea:focus, select:focus {
+        input:focus, textarea:focus {
             outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
         }
         
         textarea {
@@ -90,7 +83,7 @@
         }
         
         .submit-btn {
-            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            background: var(--gold);
             color: var(--black);
             border: none;
             padding: 14px 20px;
@@ -99,26 +92,15 @@
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
         }
         
         .submit-btn:hover {
-            background: linear-gradient(135deg, var(--dark-gold), var(--gold));
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
+            background: var(--dark-gold);
         }
         
         .submit-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-            transform: none;
-        }
-        
-        .form-footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #777;
-            font-size: 14px;
         }
         
         .success-message {
@@ -187,39 +169,33 @@
         <div id="errorMessage" class="error-message">
             There was an error submitting your form. Please try again.
         </div>
-        
-        <div class="form-footer">
-            <p>Your information is secure and will not be shared</p>
-        </div>
     </div>
 
     <script>
-        // Replace this with your Google Apps Script URL after deployment
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrMUPCWTUjfQ6DhQpxJ7yOHj4rW6Ch4T42IjeTN5yRdwfF25knp7iqI426NbRFkcb1Uw/exec';
+        // REPLACE THIS WITH YOUR ACTUAL SCRIPT URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYs-Hdhx2f3zakY_nPTYI-G49Q5GblJulbW3v43ilnbEAabcPsYBcyF2PiG4itu8FRdg/exec';
         
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-            
-            // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
             
-            // Hide previous messages
             document.getElementById('successMessage').style.display = 'none';
             document.getElementById('errorMessage').style.display = 'none';
             
             try {
-                // Get form data
                 const formData = new FormData(this);
-                const data = Object.fromEntries(formData);
+                const data = {
+                    formType: 'contact',
+                    name: formData.get('name'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    subject: formData.get('subject'),
+                    message: formData.get('message')
+                };
                 
-                // Add form type for Google Apps Script
-                data.formType = 'contact';
-                
-                // Send to Google Sheets
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
                     headers: {
@@ -231,26 +207,23 @@
                 const result = await response.json();
                 
                 if (result.status === 'success') {
-                    // Show success message
                     document.getElementById('successMessage').style.display = 'block';
-                    // Reset form
                     this.reset();
                 } else {
                     throw new Error(result.message);
                 }
                 
             } catch (error) {
-                console.error('Error:', error);
                 document.getElementById('errorMessage').style.display = 'block';
             } finally {
-                // Re-enable button
                 submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+                submitBtn.textContent = 'Send Message';
             }
         });
     </script>
 </body>
 </html>
+
 
 
 
