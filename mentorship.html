@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium Mentorship Form</title>
+    <title>Mentorship Application</title>
     <style>
         :root {
             --gold: #b8860b;
@@ -51,11 +51,6 @@
             margin-bottom: 10px;
         }
         
-        .form-header p {
-            color: #aaa;
-            font-size: 16px;
-        }
-        
         .form-group {
             margin-bottom: 20px;
         }
@@ -75,13 +70,11 @@
             border-radius: 5px;
             color: var(--white);
             font-size: 16px;
-            transition: all 0.3s ease;
         }
         
         input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: var(--gold);
-            box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.2);
         }
         
         textarea {
@@ -90,7 +83,7 @@
         }
         
         .submit-btn {
-            background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+            background: var(--gold);
             color: var(--black);
             border: none;
             padding: 14px 20px;
@@ -99,26 +92,15 @@
             border-radius: 5px;
             cursor: pointer;
             width: 100%;
-            transition: all 0.3s ease;
         }
         
         .submit-btn:hover {
-            background: linear-gradient(135deg, var(--dark-gold), var(--gold));
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.4);
+            background: var(--dark-gold);
         }
         
         .submit-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-            transform: none;
-        }
-        
-        .form-footer {
-            text-align: center;
-            margin-top: 20px;
-            color: #777;
-            font-size: 14px;
         }
         
         .success-message {
@@ -145,8 +127,8 @@
         
         .coaching-options {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 15px;
+            grid-template-columns: 1fr;
+            gap: 10px;
             margin-top: 10px;
         }
         
@@ -155,13 +137,7 @@
             border: 1px solid #333;
             border-radius: 5px;
             padding: 15px;
-            text-align: center;
             cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .coaching-option:hover {
-            border-color: var(--gold);
         }
         
         .coaching-option.selected {
@@ -200,15 +176,15 @@
             <div class="form-group">
                 <label>Area of Interest</label>
                 <div class="coaching-options">
-                    <div class="coaching-option" onclick="selectOption(this)">
+                    <div class="coaching-option" onclick="selectOption(this, 'career')">
                         <input type="radio" id="career" name="interest" value="Career Coaching" required>
                         <label for="career">Career Coaching</label>
                     </div>
-                    <div class="coaching-option" onclick="selectOption(this)">
+                    <div class="coaching-option" onclick="selectOption(this, 'health')">
                         <input type="radio" id="health" name="interest" value="Health Coaching" required>
                         <label for="health">Health Coaching</label>
                     </div>
-                    <div class="coaching-option" onclick="selectOption(this)">
+                    <div class="coaching-option" onclick="selectOption(this, 'men')">
                         <input type="radio" id="men" name="interest" value="Men Mentoring" required>
                         <label for="men">Men Mentoring</label>
                     </div>
@@ -230,12 +206,7 @@
             
             <div class="form-group">
                 <label for="goals">What are your primary goals for mentorship?</label>
-                <textarea id="goals" name="goals" placeholder="Please describe your goals and what you hope to achieve through mentorship..." required></textarea>
-            </div>
-            
-            <div class="form-group">
-                <label for="challenges">Current Challenges</label>
-                <textarea id="challenges" name="challenges" placeholder="What challenges are you currently facing in your career or personal development?"></textarea>
+                <textarea id="goals" name="goals" required></textarea>
             </div>
             
             <div class="form-group">
@@ -246,7 +217,6 @@
                     <option value="Weekday Afternoons">Weekday Afternoons</option>
                     <option value="Weekday Evenings">Weekday Evenings</option>
                     <option value="Weekends">Weekends</option>
-                    <option value="Flexible">Flexible</option>
                 </select>
             </div>
             
@@ -260,54 +230,43 @@
         <div id="errorMessage" class="error-message">
             There was an error submitting your application. Please try again.
         </div>
-        
-        <div class="form-footer">
-            <p>All applications are confidential. We match mentors based on compatibility and goals.</p>
-        </div>
     </div>
 
     <script>
-        // Replace this with your Google Apps Script URL after deployment
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrMUPCWTUjfQ6DhQpxJ7yOHj4rW6Ch4T42IjeTN5yRdwfF25knp7iqI426NbRFkcb1Uw/exec';
+        // REPLACE THIS WITH YOUR ACTUAL SCRIPT URL
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwYs-Hdhx2f3zakY_nPTYI-G49Q5GblJulbW3v43ilnbEAabcPsYBcyF2PiG4itu8FRdg/exec';
         
-        function selectOption(element) {
-            // Remove selected class from all options
-            const allOptions = document.querySelectorAll('.coaching-option');
-            allOptions.forEach(option => {
-                option.classList.remove('selected');
+        function selectOption(element, optionId) {
+            document.querySelectorAll('.coaching-option').forEach(opt => {
+                opt.classList.remove('selected');
             });
-            
-            // Add selected class to clicked option
             element.classList.add('selected');
-            
-            // Check the radio input inside the clicked option
-            const radioInput = element.querySelector('input[type="radio"]');
-            radioInput.checked = true;
+            document.getElementById(optionId).checked = true;
         }
         
         document.getElementById('mentorshipForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const submitBtn = document.getElementById('submitBtn');
-            const originalText = submitBtn.textContent;
-            
-            // Disable button and show loading state
             submitBtn.disabled = true;
             submitBtn.textContent = 'Submitting...';
             
-            // Hide previous messages
             document.getElementById('successMessage').style.display = 'none';
             document.getElementById('errorMessage').style.display = 'none';
             
             try {
-                // Get form data
                 const formData = new FormData(this);
-                const data = Object.fromEntries(formData);
+                const data = {
+                    formType: 'mentorship',
+                    fullName: formData.get('fullName'),
+                    email: formData.get('email'),
+                    phone: formData.get('phone'),
+                    interest: formData.get('interest'),
+                    experience: formData.get('experience'),
+                    goals: formData.get('goals'),
+                    preferredTime: formData.get('preferredTime')
+                };
                 
-                // Add form type for Google Apps Script
-                data.formType = 'mentorship';
-                
-                // Send to Google Sheets
                 const response = await fetch(SCRIPT_URL, {
                     method: 'POST',
                     headers: {
@@ -319,27 +278,20 @@
                 const result = await response.json();
                 
                 if (result.status === 'success') {
-                    // Show success message
                     document.getElementById('successMessage').style.display = 'block';
-                    // Reset form
                     this.reset();
-                    
-                    // Reset coaching options styling
-                    const allOptions = document.querySelectorAll('.coaching-option');
-                    allOptions.forEach(option => {
-                        option.classList.remove('selected');
+                    document.querySelectorAll('.coaching-option').forEach(opt => {
+                        opt.classList.remove('selected');
                     });
                 } else {
                     throw new Error(result.message);
                 }
                 
             } catch (error) {
-                console.error('Error:', error);
                 document.getElementById('errorMessage').style.display = 'block';
             } finally {
-                // Re-enable button
                 submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+                submitBtn.textContent = 'Apply for Mentorship';
             }
         });
     </script>
